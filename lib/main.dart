@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: MenuScreen.routeName,
+      initialRoute: AuthScreen.routeName,
       routes: {
         AuthScreen.routeName: (_) => AuthScreen(),
         MenuScreen.routeName: (_) => const MenuScreen(),
