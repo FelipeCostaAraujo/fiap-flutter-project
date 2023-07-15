@@ -2,10 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobr1/screens/menu/menu_screen.dart';
 
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
   static const routeName = '/auth_screen';
 
-  AuthScreen({super.key});
+  const AuthScreen({super.key});
+
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
 
   var email = '';
   var password = '';
@@ -83,6 +89,7 @@ class AuthScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        height: 60,
         child: TextButton(
           onPressed: () => Navigator.pushNamed(context, MenuScreen.routeName),
           child: const Text('Nao tenho conta, criar uma'),
