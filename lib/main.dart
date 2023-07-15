@@ -1,14 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
-import 'package:mobr1/screens/auth/auth_screen.dart';
-import 'package:mobr1/screens/dice/dice_screen.dart';
-import 'package:mobr1/screens/menu/menu_screen.dart';
-import 'package:mobr1/screens/movies/movies_service_locator.dart';
+import 'package:mobr1/screens/screens.dart';
 import 'package:mobr1/screens/movies/presentation/containers/movies_container.dart';
-import 'package:mobr1/screens/personal_card/personal_card_screen.dart';
-import 'package:mobr1/screens/quiz/quiz_finished_screen.dart';
-import 'package:mobr1/screens/quiz/quiz_screen.dart';
 
 import 'screens/movies/presentation/bloc/movies_cubit.dart';
 
@@ -37,7 +31,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: AuthScreen.routeName,
       routes: {
-        AuthScreen.routeName: (_) => AuthScreen(),
+        AuthScreen.routeName: (_) => const AuthScreen(),
+        SignUpScreen.routeName: (_) => const SignUpScreen(),
         MenuScreen.routeName: (_) => const MenuScreen(),
         PersonalCardScreen.routeName: (context) {
           final arguments = ModalRoute.of(context)?.settings.arguments
