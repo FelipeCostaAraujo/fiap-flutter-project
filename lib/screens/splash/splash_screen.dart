@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> with NavigationManager{
     final user = FirebaseAuth.instance.currentUser;
     if (context.mounted) {
       if (user != null) {
-        navigateTo(MenuScreen.routeName, context);
+        navigateTo(HomeScreen.routeName, context);
       } else {
         navigateTo(AuthScreen.routeName, context);
       }
