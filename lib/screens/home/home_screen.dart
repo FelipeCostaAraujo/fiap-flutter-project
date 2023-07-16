@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mobr1/mixins/navigation_manager.dart';
+import 'package:mobr1/screens/auth/presentation/screens/auth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -8,7 +11,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with NavigationManager {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,9 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
+              title: const Text('Logout'),
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                if(context.mounted){
+                  navigateTo(AuthScreen.routeName, context);
+                }
               },
             ),
           ],

@@ -55,6 +55,10 @@ class MyApp extends StatelessWidget {
         MoviesContainer.routeName: (_) =>
             MoviesCubitProvider(child: MoviesContainer()),
       },
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('pt', 'BR'),
+      ],
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobr1/screens/movies/data/use_cases/fetch_movies_impl.dart';
 import 'package:mobr1/screens/movies/domain/use_cases/fetch_movies.dart';
 import 'package:mobr1/screens/movies/domain/utils/domain_errors.dart';
 

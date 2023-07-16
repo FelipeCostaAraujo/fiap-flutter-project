@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobr1/screens/menu/menu_screen.dart';
-import 'package:mobr1/screens/signup/signup_screen.dart';
+import 'package:mobr1/screens/screens.dart';
+
+import '../bloc/auth_cubit_state.dart';
 
 class AuthScreen extends StatefulWidget {
   static const routeName = '/auth_screen';
@@ -13,7 +14,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-
   var email = '';
   var password = '';
 
@@ -112,24 +112,16 @@ class _AuthScreenState extends State<AuthScreen> {
           password: password,
         )
         .then((value) =>
-            Navigator.pushReplacementNamed(context, MenuScreen.routeName))
+            Navigator.pushReplacementNamed(context, HomeScreen.routeName))
         .onError(
-          (error, stackTrace) => authInstance
-              .createUserWithEmailAndPassword(email: email, password: password)
-              .then((value) =>
-                  Navigator.pushReplacementNamed(context, MenuScreen.routeName))
-              .onError(
-                (error, stackTrace) =>
-                    ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    backgroundColor: Colors.red,
-                    content: Text(
-                      (error as FirebaseException).message ??
-                          'Erro desconhecido',
-                    ),
-                  ),
-                ),
+          (error, stackTrace) => ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.red,
+              content: Text(
+                (error as FirebaseException).message ?? 'Erro desconhecido',
               ),
+            ),
+          ),
         );
   }
 }

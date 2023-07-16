@@ -1,4 +1,4 @@
-export 'auth/auth_screen.dart';
+export 'auth/presentation/screens/auth_screen.dart';
 export 'dice/dice_screen.dart';
 export 'menu/menu_screen.dart';
 export 'movies/movies_service_locator.dart';
