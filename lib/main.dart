@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mobr1/screens/screens.dart';
 import 'package:mobr1/screens/movies/presentation/containers/movies_container.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'screens/movies/presentation/bloc/movies_cubit.dart';
 
@@ -11,6 +12,7 @@ void main() async {
   await Firebase.initializeApp();
 
   MoviesServiceLocator.setup();
+  AuthServiceLocator.setup();
 
   runApp(const MyApp());
 }
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
         SplashScreen.routeName: (_) => const SplashScreen(),
-        AuthScreen.routeName: (_) => const AuthScreen(),
+        AuthScreen.routeName: (_) => AuthCubitProvider(child: AuthContainer()),
         SignUpScreen.routeName: (_) => const SignUpScreen(),
         MenuScreen.routeName: (_) => const MenuScreen(),
         PersonalCardScreen.routeName: (context) {
@@ -55,6 +57,11 @@ class MyApp extends StatelessWidget {
         MoviesContainer.routeName: (_) =>
             MoviesCubitProvider(child: MoviesContainer()),
       },
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       supportedLocales: const [
         Locale('en', 'US'),
         Locale('pt', 'BR'),

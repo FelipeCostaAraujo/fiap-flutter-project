@@ -9,7 +9,7 @@ class AuthCubit extends Cubit<AuthCubitState> {
   AuthCubit({required this.auth})
       : super(
           const AuthCubitState(
-            status: AuthCubitStateStatus.loading,
+            status: AuthCubitStateStatus.initial,
           ),
         );
 
@@ -20,9 +20,9 @@ class AuthCubit extends Cubit<AuthCubitState> {
     try {
       await auth
           .execute(AuthenticationParams(email: email, password: password));
-      emit(state.copyWith(status: AuthCubitStateStatus.none));
+      emit(state.copyWith(status: AuthCubitStateStatus.success));
     } on Exception {
-      emit(state.copyWith(status: AuthCubitStateStatus.none));
+      emit(state.copyWith(status: AuthCubitStateStatus.error));
     }
   }
 }

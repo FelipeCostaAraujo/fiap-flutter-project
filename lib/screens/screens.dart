@@ -1,4 +1,3 @@
-export 'auth/presentation/screens/auth_screen.dart';
 export 'dice/dice_screen.dart';
 export 'menu/menu_screen.dart';
 export 'movies/movies_service_locator.dart';
@@ -8,3 +7,4 @@ export 'quiz/quiz_screen.dart';
 export 'signup/signup_screen.dart';
 export 'splash/splash_screen.dart';
 export 'home/home_screen.dart';
+export 'auth/auth.dart';

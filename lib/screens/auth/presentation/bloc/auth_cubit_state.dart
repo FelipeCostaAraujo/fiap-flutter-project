@@ -1,4 +1,4 @@
-enum AuthCubitStateStatus { loading, none }
+enum AuthCubitStateStatus { loading, initial, success, error }
 
 class AuthCubitState {
   const AuthCubitState({
