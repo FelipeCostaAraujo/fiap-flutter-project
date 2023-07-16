@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobr1/screens/menu/menu_screen.dart';
+import 'package:mobr1/screens/signup/signup_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   static const routeName = '/auth_screen';
@@ -91,7 +92,7 @@ class _AuthScreenState extends State<AuthScreen> {
       bottomNavigationBar: BottomAppBar(
         height: 60,
         child: TextButton(
-          onPressed: () => Navigator.pushNamed(context, MenuScreen.routeName),
+          onPressed: () => Navigator.pushNamed(context, SignUpScreen.routeName),
           child: const Text('Nao tenho conta, criar uma'),
         ),
       ),

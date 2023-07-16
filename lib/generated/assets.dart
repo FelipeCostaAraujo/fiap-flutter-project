@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String fontsDancingScript = 'assets/fonts/dancing_script.ttf';
+  static const String iconUnnamed2 = 'assets/icon/icon.png';
   static const String imagesCat = 'assets/images/cat.jpg';
   static const String imagesDice1 = 'assets/images/dice1.png';
   static const String imagesDice2 = 'assets/images/dice2.png';

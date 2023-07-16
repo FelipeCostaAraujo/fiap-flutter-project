@@ -44,40 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA9T3dkHsH2LyLjAbpkfmag_luFwKG-0SI',
-    appId: '1:1028422653014:web:a50c601ba7b3180bc457f7',
-    messagingSenderId: '1028422653014',
-    projectId: 'mob1-a3551',
-    authDomain: 'mob1-a3551.firebaseapp.com',
-    storageBucket: 'mob1-a3551.appspot.com',
-    measurementId: 'G-9G6PGPR6RQ',
+    apiKey: 'AIzaSyAv7r6whp5lZkPITEbTQsMvVSmpCn-Apj0',
+    appId: '1:19060756646:web:2fce80e40ba18d561d6467',
+    messagingSenderId: '19060756646',
+    projectId: 'fiap-mobr',
+    authDomain: 'fiap-mobr.firebaseapp.com',
+    storageBucket: 'fiap-mobr.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDs4tCP2q7Lo9lgZp2hn-X0-aQt_dtoqRE',
-    appId: '1:1028422653014:android:ac45c3b2e60d963dc457f7',
-    messagingSenderId: '1028422653014',
-    projectId: 'mob1-a3551',
-    storageBucket: 'mob1-a3551.appspot.com',
+    apiKey: 'AIzaSyBDCmYqJc3OWeAa6BT3OaHSnjbFwicLFqk',
+    appId: '1:19060756646:android:398b4e7835576abf1d6467',
+    messagingSenderId: '19060756646',
+    projectId: 'fiap-mobr',
+    storageBucket: 'fiap-mobr.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDnE9tO8MfbNu3gBAUhe_wUpVwDJCW0m6g',
-    appId: '1:1028422653014:ios:cdf2a852aa8729f1c457f7',
-    messagingSenderId: '1028422653014',
-    projectId: 'mob1-a3551',
-    storageBucket: 'mob1-a3551.appspot.com',
-    iosClientId: '1028422653014-kjfcreulmimj3nb7ftlbj60rqcdhcai5.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDWx3n3cf7_NJxcaA33Cfgq9HxN85V7O4k',
+    appId: '1:19060756646:ios:646a4fb67c1678341d6467',
+    messagingSenderId: '19060756646',
+    projectId: 'fiap-mobr',
+    storageBucket: 'fiap-mobr.appspot.com',
+    iosClientId: '19060756646-gp42oetgr76kj014fagh69n49nt3eoot.apps.googleusercontent.com',
     iosBundleId: 'com.example.mobr1',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDnE9tO8MfbNu3gBAUhe_wUpVwDJCW0m6g',
-    appId: '1:1028422653014:ios:1f588b2531eb1767c457f7',
-    messagingSenderId: '1028422653014',
-    projectId: 'mob1-a3551',
-    storageBucket: 'mob1-a3551.appspot.com',
-    iosClientId: '1028422653014-5kftol8eqi5mecnq9507bm3qm75p9rmt.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDWx3n3cf7_NJxcaA33Cfgq9HxN85V7O4k',
+    appId: '1:19060756646:ios:7cc7844760b862c51d6467',
+    messagingSenderId: '19060756646',
+    projectId: 'fiap-mobr',
+    storageBucket: 'fiap-mobr.appspot.com',
+    iosClientId: '19060756646-qcgoiejj00giqj0vvph47ss8m4rsboum.apps.googleusercontent.com',
     iosBundleId: 'com.example.mobr1.RunnerTests',
   );
 }
