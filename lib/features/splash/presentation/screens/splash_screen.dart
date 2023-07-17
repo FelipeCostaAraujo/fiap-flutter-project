@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../mixins/navigation_manager.dart';
+import 'package:mobr1/core/core.dart';
 import '../../../features.dart';
 
 class SplashScreen extends StatefulWidget {

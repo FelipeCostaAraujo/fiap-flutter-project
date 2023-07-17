@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobr1/mixins/navigation_manager.dart';
+import 'package:mobr1/core/core.dart';
 
 import '../features.dart';
 
