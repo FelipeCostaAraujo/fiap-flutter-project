@@ -2,10 +2,13 @@ enum DomainError {
   invalidCredentials,
   timeOut,
   serverError,
-  unexpected;
+  unexpected,
+  userNotFound;
 
   String get description {
     switch (this) {
+      case DomainError.userNotFound:
+        return 'Usuário não encontrado';
       case DomainError.invalidCredentials:
         return 'Crendenciais inválidas';
       case DomainError.timeOut:

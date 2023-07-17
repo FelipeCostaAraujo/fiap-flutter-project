@@ -7,8 +7,7 @@ import '../../../../mixins/navigation_manager.dart';
 import '../../../features.dart';
 
 class AuthScreen extends StatefulWidget {
-  static const routeName = '/auth_screen';
-
+  static const routeName = '/auth';
   const AuthScreen({super.key});
 
   @override

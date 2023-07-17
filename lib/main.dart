@@ -10,6 +10,7 @@ void main() async {
   await Firebase.initializeApp();
   ///Setup the [AuthServiceLocator] to use the [FirebaseAuthService]
   AuthServiceLocator.setup();
+  SplashServiceLocator.setup();
 
   runApp(const MyApp());
 }
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
-        SplashScreen.routeName: (_) => const SplashScreen(),
+        SplashScreen.routeName: (_) => SplashCubitProvider(child:  SplashContainer()),
         AuthScreen.routeName: (_) => AuthCubitProvider(child: AuthContainer()),
         SignUpScreen.routeName: (_) => const SignUpScreen(),
 
