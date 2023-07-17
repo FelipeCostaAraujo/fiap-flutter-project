@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> with NavigationManager{
   }
 
   Future<void> verifyUser() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
     final user = FirebaseAuth.instance.currentUser;
     if (context.mounted) {
       if (user != null) {

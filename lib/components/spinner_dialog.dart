@@ -10,6 +10,7 @@ class SpinnerLoading extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 10),
             CircularProgressIndicator(color: Theme.of(context).primaryColor),
             const SizedBox(height: 10),
             const Text(

@@ -12,8 +12,7 @@ class RemoteAuthentication implements Authentication {
         email: params.email,
         password: params.password,
       );
-    } catch (error) {
-      error as FirebaseAuthException;
+    }on FirebaseAuthException catch (error) {
       switch(error.code){
         case 'user-not-found':
         case 'wrong-password':

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/auth_cubit.dart';
@@ -11,7 +10,7 @@ class AuthContainer extends BlocBuilder<AuthCubit,AuthCubitState> {
   AuthContainer({super.key})
    : super(
      builder: (context, state) {
-       return AuthScreen();
+       return const AuthScreen();
      },
    );
 }

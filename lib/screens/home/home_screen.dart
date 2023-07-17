@@ -53,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
       ),
       body: Container(),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
