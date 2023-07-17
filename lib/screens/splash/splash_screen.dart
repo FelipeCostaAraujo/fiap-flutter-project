@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with NavigationManager{
+class _SplashScreenState extends State<SplashScreen> with NavigationManager {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

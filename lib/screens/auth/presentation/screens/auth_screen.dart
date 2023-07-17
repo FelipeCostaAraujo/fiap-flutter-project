@@ -32,22 +32,22 @@ class _AuthScreenState extends State<AuthScreen> with NavigationManager {
         ),
         backgroundColor: Theme.of(context).primaryColor.withOpacity(0.15),
       ),
-      body: BlocConsumer<AuthCubit,AuthCubitState>(
+      body: BlocConsumer<AuthCubit, AuthCubitState>(
         listener: (context, state) {
           if (state.status == AuthCubitStateStatus.authenticated) {
             Navigator.pushNamed(context, HomeScreen.routeName);
           }
         },
         builder: (context, state) {
-          if(state.status == AuthCubitStateStatus.loading){
+          if (state.status == AuthCubitStateStatus.loading) {
             showLoading(context);
           }
-          if(state.status == AuthCubitStateStatus.error){
+          if (state.status == AuthCubitStateStatus.error) {
             hideLoading(context);
             showError(state.error ?? "Erro desconhecido");
           }
-          if(state.status == AuthCubitStateStatus.authenticated){
-            navigateTo(HomeScreen.routeName,context);
+          if (state.status == AuthCubitStateStatus.authenticated) {
+            navigateTo(HomeScreen.routeName, context);
           }
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -94,15 +94,16 @@ class _AuthScreenState extends State<AuthScreen> with NavigationManager {
                 const SizedBox(height: 32),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    fixedSize: Size(MediaQuery.of(context).size.width * 0.9, 50),
+                    fixedSize:
+                        Size(MediaQuery.of(context).size.width * 0.9, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                   onPressed: () async => await context.read<AuthCubit>().signIn(
-                    _emailController.text,
-                    _passwordController.text,
-                  ),
+                        _emailController.text,
+                        _passwordController.text,
+                      ),
                   child: const Text('Login'),
                 ),
               ],
@@ -120,15 +121,14 @@ class _AuthScreenState extends State<AuthScreen> with NavigationManager {
     );
   }
 
-  showError(String error){
+  showError(String error) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
             backgroundColor: Colors.red,
             content: Center(
               child: Text(error),
-            )
-        ),
+            )),
       );
     });
   }

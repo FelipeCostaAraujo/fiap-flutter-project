@@ -66,7 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '19060756646',
     projectId: 'fiap-mobr',
     storageBucket: 'fiap-mobr.appspot.com',
-    iosClientId: '19060756646-gp42oetgr76kj014fagh69n49nt3eoot.apps.googleusercontent.com',
+    iosClientId:
+        '19060756646-gp42oetgr76kj014fagh69n49nt3eoot.apps.googleusercontent.com',
     iosBundleId: 'com.example.mobr1',
   );
 
@@ -76,7 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '19060756646',
     projectId: 'fiap-mobr',
     storageBucket: 'fiap-mobr.appspot.com',
-    iosClientId: '19060756646-qcgoiejj00giqj0vvph47ss8m4rsboum.apps.googleusercontent.com',
+    iosClientId:
+        '19060756646-qcgoiejj00giqj0vvph47ss8m4rsboum.apps.googleusercontent.com',
     iosBundleId: 'com.example.mobr1.RunnerTests',
   );
 }

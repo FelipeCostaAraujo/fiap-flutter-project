@@ -26,12 +26,11 @@ class MoviesErrorScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'Ops, parece que ocorreu uma falha\n\nErro retornado: $errorMessage',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-          )
-        ),
+            'Ops, parece que ocorreu uma falha\n\nErro retornado: $errorMessage',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            )),
       ),
     );
   }

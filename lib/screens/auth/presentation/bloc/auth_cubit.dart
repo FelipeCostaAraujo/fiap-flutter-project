@@ -38,9 +38,10 @@ class AuthCubitProvider extends BlocProvider<AuthCubit> {
     Key? key,
     Widget? child,
   }) : super(
-            key: key,
-            create: (_) => AuthCubit(auth: GetIt.instance<Authentication>()),
-            child: child);
+          key: key,
+          create: (_) => AuthCubit(auth: GetIt.instance<Authentication>()),
+          child: child,
+        );
 
   static AuthCubit of(BuildContext context) =>
       BlocProvider.of<AuthCubit>(context);

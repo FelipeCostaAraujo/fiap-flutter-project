@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
               title: const Text('Logout'),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
-                if(context.mounted){
+                if (context.mounted) {
                   navigateTo(AuthScreen.routeName, context);
                 }
               },
@@ -72,4 +72,3 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
     );
   }
 }
-

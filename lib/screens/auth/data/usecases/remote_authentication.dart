@@ -4,7 +4,6 @@ import 'package:mobr1/screens/auth/domain/usecases/authentication.dart';
 import '../../domain/utils/domain_errors.dart';
 
 class RemoteAuthentication implements Authentication {
-
   @override
   Future<void> execute(AuthenticationParams params) async {
     try {
@@ -12,8 +11,8 @@ class RemoteAuthentication implements Authentication {
         email: params.email,
         password: params.password,
       );
-    }on FirebaseAuthException catch (error) {
-      switch(error.code){
+    } on FirebaseAuthException catch (error) {
+      switch (error.code) {
         case 'user-not-found':
         case 'wrong-password':
           throw DomainError.invalidCredentials;

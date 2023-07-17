@@ -12,14 +12,10 @@ class PersonalCardScreenParams {
   final String email;
 }
 
-
 class PersonalCardScreen extends StatefulWidget {
   static const routeName = '/personal-card';
 
-  const PersonalCardScreen({
-    super.key,
-    required this.params
-  });
+  const PersonalCardScreen({super.key, required this.params});
 
   final PersonalCardScreenParams params;
 
@@ -66,7 +62,8 @@ class _PersonalCardScreenState extends State<PersonalCardScreen> {
                 text: widget.params.phoneNumber,
                 onPressed: () {
                   launchUrl(
-                    Uri.parse('whatsapp://send?phone=${widget.params.phoneNumber}&text=Olá'),
+                    Uri.parse(
+                        'whatsapp://send?phone=${widget.params.phoneNumber}&text=Olá'),
                   );
                 },
               ),
