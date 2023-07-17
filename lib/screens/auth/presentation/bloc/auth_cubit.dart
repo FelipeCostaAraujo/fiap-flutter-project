@@ -26,7 +26,6 @@ class AuthCubit extends Cubit<AuthCubitState> {
         status: AuthCubitStateStatus.error,
         error: e.description,
       ));
-      emit(state.copyWith(status: AuthCubitStateStatus.error));
     } finally {
       emit(state.copyWith(status: AuthCubitStateStatus.loaded));
     }

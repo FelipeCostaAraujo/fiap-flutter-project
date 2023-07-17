@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobr1/components/spinner_dialog.dart';
 import 'package:mobr1/screens/screens.dart';
 
+import '../../../../components/components.dart';
 import '../../../../mixins/navigation_manager.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -37,18 +37,18 @@ class _AuthScreenState extends State<AuthScreen> with NavigationManager {
           if (state.status == AuthCubitStateStatus.authenticated) {
             Navigator.pushNamed(context, HomeScreen.routeName);
           }
-        },
-        builder: (context, state) {
           if (state.status == AuthCubitStateStatus.loading) {
             showLoading(context);
           }
           if (state.status == AuthCubitStateStatus.error) {
             hideLoading(context);
-            showError(state.error ?? "Erro desconhecido");
+            showError(context, state.error ?? "Erro desconhecido");
           }
           if (state.status == AuthCubitStateStatus.authenticated) {
             navigateTo(HomeScreen.routeName, context);
           }
+        },
+        builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
@@ -119,17 +119,5 @@ class _AuthScreenState extends State<AuthScreen> with NavigationManager {
         ),
       ),
     );
-  }
-
-  showError(String error) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            backgroundColor: Colors.red,
-            content: Center(
-              child: Text(error),
-            )),
-      );
-    });
   }
 }
