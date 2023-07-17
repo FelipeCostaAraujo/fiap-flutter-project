@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../mixins/navigation_manager.dart';
-import '../screens.dart';
+import '../features.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/splash_screen';

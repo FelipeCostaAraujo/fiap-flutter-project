@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:mobr1/screens/auth/data/usecases/remote_authentication.dart';
+
+import './auth.dart';
 
 import 'domain/usecases/authentication.dart';
 

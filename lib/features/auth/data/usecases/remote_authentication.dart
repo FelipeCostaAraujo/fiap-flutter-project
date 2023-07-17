@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mobr1/screens/auth/domain/usecases/authentication.dart';
 
-import '../../domain/utils/domain_errors.dart';
+import '../../domain/usecases/authentication.dart';
+
+import '../../../../core/errors/domain_errors.dart';
 
 class RemoteAuthentication implements Authentication {
   @override

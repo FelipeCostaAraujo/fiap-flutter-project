@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobr1/mixins/navigation_manager.dart';
-import 'package:mobr1/screens/auth/presentation/screens/auth_screen.dart';
+
+import '../features.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';

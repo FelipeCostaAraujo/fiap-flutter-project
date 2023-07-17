@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobr1/screens/auth/domain/usecases/authentication.dart';
-import 'package:mobr1/screens/auth/domain/utils/domain_errors.dart';
-import 'auth_cubit_state.dart';
+
+import '../../../../core/errors/errors.dart';
+import '../../auth.dart';
 
 class AuthCubit extends Cubit<AuthCubitState> {
   AuthCubit({required this.auth})

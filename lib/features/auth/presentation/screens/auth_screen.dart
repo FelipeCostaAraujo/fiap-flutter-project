@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobr1/screens/screens.dart';
 
 import '../../../../components/components.dart';
 import '../../../../mixins/navigation_manager.dart';
+
+import '../../../features.dart';
 
 class AuthScreen extends StatefulWidget {
   static const routeName = '/auth_screen';
