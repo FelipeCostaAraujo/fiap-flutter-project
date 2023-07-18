@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
         SplashScreen.routeName: (_) => SplashCubitProvider(child:  SplashContainer()),
         AuthScreen.routeName: (_) => AuthCubitProvider(child: AuthContainer()),
         SignUpScreen.routeName: (_) => const SignUpScreen(),
-
       },
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
