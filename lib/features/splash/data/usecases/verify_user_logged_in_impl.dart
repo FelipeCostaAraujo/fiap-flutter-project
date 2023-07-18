@@ -13,7 +13,7 @@ class VerifyUserLoggedInImpl implements VerifyUserLoggedIn {
         throw Exception();
       }
     } catch (e) {
-      throw Exception(DomainError.userNotFound);
+      throw DomainError.userNotFound;
     }
   }
 }

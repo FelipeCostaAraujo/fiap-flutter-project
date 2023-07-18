@@ -32,9 +32,6 @@ class _AuthScreenState extends State<AuthScreen> with NavigationManager {
       ),
       body: BlocConsumer<AuthCubit, AuthCubitState>(
         listener: (context, state) {
-          if (state.status == AuthCubitStateStatus.authenticated) {
-            Navigator.pushNamed(context, HomeScreen.routeName);
-          }
           if (state.status == AuthCubitStateStatus.loading) {
             showLoading(context);
           }

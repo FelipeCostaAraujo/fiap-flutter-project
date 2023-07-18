@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeScreen'),
+        title: const Text('Filmes'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -40,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
             ),
             ListTile(
               title: const Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () {},
             ),
             ListTile(
               title: const Text('Logout'),
@@ -57,13 +55,19 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
         ),
       ),
       body: BlocConsumer<HomeCubit, HomeCubitState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.status == HomeCubitStateStatus.error) {
+            showError(context, state.error!);
+          }
+          if (state.status == HomeCubitStateStatus.loaded) {
+            hideLoading(context);
+          }
+        },
         builder: (context, state) {
           if (state.status == HomeCubitStateStatus.loading) {
             showLoading(context);
           }
           if (state.status == HomeCubitStateStatus.loaded) {
-            hideLoading(context);
             return ListView.separated(
               itemCount: widget.moviesList.length,
               padding: const EdgeInsets.all(16),

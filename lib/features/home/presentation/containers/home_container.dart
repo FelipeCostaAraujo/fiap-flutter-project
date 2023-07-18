@@ -10,16 +10,17 @@ class HomeContainer extends BlocBuilder<HomeCubit, HomeCubitState> {
       : super(
           builder: (context, state) {
             return HomeScreen(
-                moviesList: List<HomeViewModel>.from(
-              state.moviesList.map(
-                (movie) => HomeViewModel(
-                  id: movie.id,
-                  title: movie.title,
-                  image: Settings.movieDbImagesUrl + movie.posterPath,
-                  description: movie.overview,
+              moviesList: List<HomeViewModel>.from(
+                state.moviesList.map(
+                  (movie) => HomeViewModel(
+                    id: movie.id,
+                    title: movie.title,
+                    image: Settings.movieDbImagesUrl + movie.posterPath,
+                    description: movie.overview,
+                  ),
                 ),
               ),
-            ));
+            );
           },
         );
 }
