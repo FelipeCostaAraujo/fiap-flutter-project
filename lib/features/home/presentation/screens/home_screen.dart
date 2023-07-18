@@ -24,33 +24,66 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
         title: const Text('Filmes'),
       ),
       drawer: Drawer(
-        child: ListView(
+        child: Column(
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+            Expanded(
+              child: ListView(
+                children: [
+                  const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                    ),
+                    child: Text(
+                      'Filmes Fiap',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Perfil'),
+                        SizedBox(width: 8),
+                        Icon(Icons.person),
+                      ],
+                    ),
+                    onTap: () async {
+                      //navigateTo(ProfileScreen.routeName, context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Logout'),
+                        SizedBox(width: 8),
+                        Icon(Icons.logout),
+                      ],
+                    ),
+                    onTap: () async {
+                      await FirebaseAuth.instance.signOut();
+                      if (context.mounted) {
+                        navigateTo(AuthScreen.routeName, context, clear: true);
+                      }
+                    },
+                  ),
+                ],
               ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+            ),
+            Expanded(
+              child: ListView(
+                reverse: true,
+                children: [
+                  ListTile(
+                    title: const Text('Versão 1.0.0'),
+                    onTap: () {},
+                  ),
+                ],
               ),
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('Logout'),
-              onTap: () async {
-                await FirebaseAuth.instance.signOut();
-                if (context.mounted) {
-                  navigateTo(AuthScreen.routeName, context);
-                }
-              },
-            ),
+            )
           ],
         ),
       ),
@@ -86,4 +119,6 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
       ),
     );
   }
+
+  _HomeScreenState();
 }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:mobr1/features/features.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import './router_generator.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -15,6 +17,8 @@ void main() async {
 
   runApp(const MyApp());
 }
+
+const routes = RouteGenerator.generateRoute;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,14 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: SplashScreen.routeName,
-      routes: {
-        HomeScreen.routeName: (_) => HomeCubitProvider(child: HomeContainer()),
-        SplashScreen.routeName: (_) =>
-            SplashCubitProvider(child: SplashContainer()),
-        AuthScreen.routeName: (_) => AuthCubitProvider(child: AuthContainer()),
-        SignUpScreen.routeName: (_) => const SignUpScreen(),
-      },
+      onGenerateRoute: routes,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

@@ -18,7 +18,6 @@ class HomeCubit extends Cubit<HomeCubitState> {
   void onInit() async {
     try {
       final moviesList = await loadMovies.call();
-      await Future.delayed(Duration(seconds: 3));
 
       emit(state.copyWith(
         status: HomeCubitStateStatus.loaded,
