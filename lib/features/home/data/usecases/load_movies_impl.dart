@@ -1,5 +1,5 @@
 import 'package:mobr1/core/core.dart';
-import 'package:mobr1/features/home/data/models/remote_movie_model.dart';
+import 'package:mobr1/features/home/data/models/remote_movie__detail_model.dart';
 
 import '../../../../core/data/http.dart';
 import '../../domain/entities/movie_entity.dart';
@@ -17,7 +17,7 @@ class LoadMoviesImpl implements LoadMovies {
       final httpResponse = await httpClient.request(url: url, method: 'get');
       return List.generate(
         httpResponse["results"].length,
-        (index) => RemoteMovieModel.fromJson(httpResponse["results"][index])
+        (index) => RemoteMovieDetailModel.fromJson(httpResponse["results"][index])
             .toEntity(),
       );
     } on DomainError catch (error) {

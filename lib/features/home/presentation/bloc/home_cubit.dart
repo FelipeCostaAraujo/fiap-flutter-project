@@ -8,10 +8,10 @@ import '../../home.dart';
 class HomeCubit extends Cubit<HomeCubitState> {
   HomeCubit({required this.loadMovies})
       : super(
-          const HomeCubitState(
-            status: HomeCubitStateStatus.loading,
-          ),
-        );
+    const HomeCubitState(
+      status: HomeCubitStateStatus.loading,
+    ),
+  );
 
   LoadMovies loadMovies;
 
@@ -39,12 +39,12 @@ class HomeCubitProvider extends BlocProvider<HomeCubit> {
     Key? key,
     Widget? child,
   }) : super(
-          key: key,
-          create: (_) => HomeCubit(
-            loadMovies: GetIt.instance<LoadMovies>(),
-          )..onInit(),
-          child: child,
-        );
+    key: key,
+    create: (_) => HomeCubit(
+      loadMovies: GetIt.instance<LoadMovies>(),
+    )..onInit(),
+    child: child,
+  );
 
   static HomeCubit of(BuildContext context) =>
       BlocProvider.of<HomeCubit>(context);

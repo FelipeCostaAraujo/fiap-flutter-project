@@ -21,70 +21,75 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Filmes'),
+        title: const Text('Filmes',style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.deepPurple,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                children: [
-                  const DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                    ),
-                    child: Text(
-                      'Filmes Fiap',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
+      drawer: SafeArea(
+        bottom: false,
+        child: Drawer(
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  children: [
+                    const DrawerHeader(
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                      ),
+                      child: Text(
+                        'Filmes Fiap',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
-                  ),
-                  ListTile(
-                    title: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Perfil'),
-                        SizedBox(width: 8),
-                        Icon(Icons.person),
-                      ],
+                    ListTile(
+                      title: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Perfil'),
+                          SizedBox(width: 8),
+                          Icon(Icons.person),
+                        ],
+                      ),
+                      onTap: () async {
+                        //navigateTo(ProfileScreen.routeName, context);
+                      },
                     ),
-                    onTap: () async {
-                      //navigateTo(ProfileScreen.routeName, context);
-                    },
-                  ),
-                  ListTile(
-                    title: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Logout'),
-                        SizedBox(width: 8),
-                        Icon(Icons.logout),
-                      ],
+                    ListTile(
+                      title: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Logout'),
+                          SizedBox(width: 8),
+                          Icon(Icons.logout),
+                        ],
+                      ),
+                      onTap: () async {
+                        await FirebaseAuth.instance.signOut();
+                        if (context.mounted) {
+                          navigateTo(AuthScreen.routeName, context, clear: true);
+                        }
+                      },
                     ),
-                    onTap: () async {
-                      await FirebaseAuth.instance.signOut();
-                      if (context.mounted) {
-                        navigateTo(AuthScreen.routeName, context, clear: true);
-                      }
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView(
-                reverse: true,
-                children: [
-                  ListTile(
-                    title: const Text('Versão 1.0.0'),
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            )
-          ],
+              Expanded(
+                child: ListView(
+                  reverse: true,
+                  children: [
+                    ListTile(
+                      title: const Text('Versão 1.0.0'),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
       body: BlocConsumer<HomeCubit, HomeCubitState>(
