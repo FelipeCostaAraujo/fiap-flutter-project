@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:mobr1/features/features.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   ///Setup the [AuthServiceLocator] to use the [FirebaseAuthService]
   AuthServiceLocator.setup();
   SplashServiceLocator.setup();
+  HomeServiceLocator.setup();
 
   runApp(const MyApp());
 }
@@ -31,8 +32,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: SplashScreen.routeName,
       routes: {
-        HomeScreen.routeName: (_) => const HomeScreen(),
-        SplashScreen.routeName: (_) => SplashCubitProvider(child:  SplashContainer()),
+        HomeScreen.routeName: (_) => HomeCubitProvider(child: HomeContainer()),
+        SplashScreen.routeName: (_) =>
+            SplashCubitProvider(child: SplashContainer()),
         AuthScreen.routeName: (_) => AuthCubitProvider(child: AuthContainer()),
         SignUpScreen.routeName: (_) => const SignUpScreen(),
       },

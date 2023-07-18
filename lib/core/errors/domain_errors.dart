@@ -3,7 +3,8 @@ enum DomainError {
   timeOut,
   serverError,
   unexpected,
-  userNotFound;
+  userNotFound,
+  accessDenied;
 
   String get description {
     switch (this) {

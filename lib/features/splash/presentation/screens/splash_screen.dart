@@ -16,23 +16,20 @@ class _SplashScreenState extends State<SplashScreen> with NavigationManager {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<SplashCubit, SplashCubitState>(
-        listener: (context, state){
-          if(state.status == SplashCubitStateStatus.authenticated){
-            navigateTo(HomeScreen.routeName, context);
-          }
-          if(state.status == SplashCubitStateStatus.unauthenticated){
-            navigateTo(AuthScreen.routeName, context);
-          }
-        },
-        builder: (context, state) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.deepPurple,
-            ),
-          );
-        }
-      )
-    );
+        body: BlocConsumer<SplashCubit, SplashCubitState>(
+            listener: (context, state) {
+      if (state.status == SplashCubitStateStatus.authenticated) {
+        navigateTo(HomeScreen.routeName, context);
+      }
+      if (state.status == SplashCubitStateStatus.unauthenticated) {
+        navigateTo(AuthScreen.routeName, context);
+      }
+    }, builder: (context, state) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: Colors.deepPurple,
+        ),
+      );
+    }));
   }
 }

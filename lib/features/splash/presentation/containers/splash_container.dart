@@ -7,8 +7,8 @@ class SplashContainer extends BlocBuilder<SplashCubit, SplashCubitState> {
 
   SplashContainer({super.key})
       : super(
-    builder: (context, state) {
-      return const SplashScreen();
-    },
-  );
+          builder: (context, state) {
+            return const SplashScreen();
+          },
+        );
 }

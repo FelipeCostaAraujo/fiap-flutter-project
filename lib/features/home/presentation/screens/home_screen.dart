@@ -1,12 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobr1/core/core.dart';
 
-import '../features.dart';
+import '../../../features.dart';
+import 'components/componets.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
-  const HomeScreen({super.key});
+
+  final List<HomeViewModel> moviesList;
+  const HomeScreen({required this.moviesList, super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -52,23 +56,29 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
           ],
         ),
       ),
-      body: Container(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favoritos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
+      body: BlocConsumer<HomeCubit, HomeCubitState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          if (state.status == HomeCubitStateStatus.loading) {
+            showLoading(context);
+          }
+          if (state.status == HomeCubitStateStatus.loaded) {
+            hideLoading(context);
+            return ListView.separated(
+              itemCount: widget.moviesList.length,
+              padding: const EdgeInsets.all(16),
+              separatorBuilder: (_, __) => const SizedBox(height: 16),
+              itemBuilder: (context, index) {
+                final movie = widget.moviesList[index];
+                return MoviesListCell(
+                  movie: movie,
+                );
+              },
+            );
+          } else {
+            return const SizedBox.shrink();
+          }
+        },
       ),
     );
   }
