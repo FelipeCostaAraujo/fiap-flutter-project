@@ -52,6 +52,19 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                       title: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Text('Favoritos'),
+                          SizedBox(width: 8),
+                          Icon(Icons.star),
+                        ],
+                      ),
+                      onTap: () async {
+                        //navigateTo(Favorites.routeName, context);
+                      },
+                    ),
+                    ListTile(
+                      title: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
                           Text('Perfil'),
                           SizedBox(width: 8),
                           Icon(Icons.person),
