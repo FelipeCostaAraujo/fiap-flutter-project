@@ -1,6 +1,6 @@
 import '../../domain/entities/entities.dart';
 
-enum MovieCubitStateStatus { initial, loading, loaded, error }
+enum MovieCubitStateStatus { loading, loaded, error }
 
 class MovieCubitState {
   const MovieCubitState({

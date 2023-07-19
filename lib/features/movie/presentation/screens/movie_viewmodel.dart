@@ -22,7 +22,7 @@ class MovieViewModel {
 
 class ProductionCompaniesViewModel {
   final int id;
-  final String logoPath;
+  final String? logoPath;
   final String name;
   final String originCountry;
 

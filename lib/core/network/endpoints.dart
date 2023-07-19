@@ -1,6 +1,6 @@
 class EndPoints {
   static String movies = "/discover/movie";
-  static String movieDetails(String movieID) => "/movie/$movieID/";
+  static String movieDetails = "/movie/";
   static String movieVideos = "/movie/";
   static String movieReviews = "/movie/";
   static String moviesPopular = "/movie/popular";

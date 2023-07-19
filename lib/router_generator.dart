@@ -27,10 +27,13 @@ class RouteGenerator {
           builder: (_) => const SignUpScreen(),
         );
 
-      case '/movies-details':
-        if (args is String) {
+      case MovieScreen.routeName:
+        if (args is int) {
           return MaterialPageRoute(
-            builder: (_) => Container(),
+            builder: (_) => MovieCubitProvider(
+              id: args,
+              child: MovieContainer(),
+            ),
           );
         }
         return _errorRoute();

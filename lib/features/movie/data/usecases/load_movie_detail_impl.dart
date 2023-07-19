@@ -12,8 +12,7 @@ class LoadMovieDetailImpl implements LoadMovieDetail {
   @override
   Future<MovieDetailEntity> call(int id) async {
     try {
-      final httpResponse = await httpClient.request(url: url, method: 'get');
-      print(RemoteMovieModel.fromJson(httpResponse));
+      final httpResponse = await httpClient.request(url: "$url$id", method: 'get');
       return RemoteMovieModel.fromJson(httpResponse).toEntity();
     } on DomainError catch (error) {
       throw error == DomainError.accessDenied
