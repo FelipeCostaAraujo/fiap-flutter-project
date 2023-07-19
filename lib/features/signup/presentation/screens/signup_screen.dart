@@ -20,7 +20,6 @@ class _SignUpScreenState extends State<SignUpScreen>
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,10 +132,10 @@ class _SignUpScreenState extends State<SignUpScreen>
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           await context.read<SignUpCubit>().register(
-                            name: _nameController.text,
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                          );
+                                name: _nameController.text,
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                              );
                         }
                       },
                       child: const Text('Cadastrar Usuário'),
