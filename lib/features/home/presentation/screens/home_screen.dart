@@ -78,6 +78,26 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                       title: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Text('Configurações'),
+                          SizedBox(width: 8),
+                          Icon(Icons.settings),
+                        ],
+                      ),
+                      onTap: () async {
+                        //navigateTo(Favorites.routeName, context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  reverse: true,
+                  children: [
+                    ListTile(
+                      title: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
                           Text('Logout'),
                           SizedBox(width: 8),
                           Icon(Icons.logout),
@@ -90,17 +110,6 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                               clear: true);
                         }
                       },
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ListView(
-                  reverse: true,
-                  children: [
-                    ListTile(
-                      title: const Text('Versão 1.0.0'),
-                      onTap: () {},
                     ),
                   ],
                 ),
