@@ -22,7 +22,7 @@ class MovieScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+              padding: const EdgeInsets.all(16),
               child: Text(
                 model.title,
                 style: const TextStyle(
@@ -32,7 +32,8 @@ class MovieScreen extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 36),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              height: MediaQuery.of(context).size.height * 0.4,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(model.posterPath),
@@ -60,15 +61,18 @@ class MovieScreen extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget textBuilder(
-      {required String title, required String text, bool spaceOnTop = true}) {
+  Widget textBuilder({
+    required String title,
+    required String text,
+    bool spaceOnTop = true,
+  }) {
     return Column(
       children: [
         spaceOnTop ? const SizedBox(height: 8) : const SizedBox(),

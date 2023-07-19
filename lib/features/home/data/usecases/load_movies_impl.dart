@@ -1,5 +1,5 @@
 import 'package:mobr1/core/core.dart';
-import 'package:mobr1/features/home/data/models/remote_movie__detail_model.dart';
+import 'package:mobr1/features/home/data/models/remote_movie_detail_model.dart';
 
 import '../../../../core/data/http.dart';
 import '../../domain/entities/movie_entity.dart';

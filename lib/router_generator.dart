@@ -32,7 +32,7 @@ class RouteGenerator {
           return MaterialPageRoute(
             builder: (_) => MovieCubitProvider(
               id: args,
-              child: MovieContainer(),
+              child: MovieContainer(id: args),
             ),
           );
         }

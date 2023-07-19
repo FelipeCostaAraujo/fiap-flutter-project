@@ -15,8 +15,8 @@ class MovieCubit extends Cubit<MovieCubitState> {
 
   Future<void> load(int id) async {
     try {
+      emit(state.copyWith(status: MovieCubitStateStatus.loading));
       final movie = await loadMovieDetail.call(id);
-
       emit(state.copyWith(
         status: MovieCubitStateStatus.loaded,
         movie: movie,
