@@ -24,18 +24,6 @@ class DefaultFirebaseOptions {
         return android;
       case TargetPlatform.iOS:
         return ios;
-      case TargetPlatform.macOS:
-        return macos;
-      case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
-      case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -69,16 +57,5 @@ class DefaultFirebaseOptions {
     iosClientId:
         '19060756646-gp42oetgr76kj014fagh69n49nt3eoot.apps.googleusercontent.com',
     iosBundleId: 'com.example.mobr1',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDWx3n3cf7_NJxcaA33Cfgq9HxN85V7O4k',
-    appId: '1:19060756646:ios:7cc7844760b862c51d6467',
-    messagingSenderId: '19060756646',
-    projectId: 'fiap-mobr',
-    storageBucket: 'fiap-mobr.appspot.com',
-    iosClientId:
-        '19060756646-qcgoiejj00giqj0vvph47ss8m4rsboum.apps.googleusercontent.com',
-    iosBundleId: 'com.example.mobr1.RunnerTests',
   );
 }

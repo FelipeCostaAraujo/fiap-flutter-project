@@ -2,7 +2,7 @@
 _1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / MARCELO PINHEIRO MONTANHER_
 
 ## Lista de tarefas
-- [ ] (2pts) Tela de Login e Cadastro separadas. O app deve ter uma tela de Splash também, nessa tela deve ser verificado se o usuário já realizou o login, caso já tenha feito o login, redirecionar diretamente para a home da aplicação
+- [x] (2pts) Tela de Login e Cadastro separadas. O app deve ter uma tela de Splash também, nessa tela deve ser verificado se o usuário já realizou o login, caso já tenha feito o login, redirecionar diretamente para a home da aplicação
 - [x] (2pts) Integração com banco de dados do Firebase ou consumo de alguma API (pode ser os dois).
 - [x] (1pt) Presença de listagem de informações (ListView)
 - [ ] (1pt) Documentação com informações gerais sobre a aplicação, objetivo do projeto, layout, instruções para testar o projeto (se necessário)

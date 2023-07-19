@@ -18,11 +18,11 @@ class SignUpImpl implements SignUp {
       }
       String userId = userCredential.user!.uid;
 
-      await FirebaseFirestore.instance.collection('users').doc(userId).set({
-        'id': userId,
-        'name': params.name,
-        'email': params.email,
-      });
+      await FirebaseFirestore.instance.collection('users').add({
+            'id': userId,
+            'name': params.name,
+            'email': params.email,
+          });
     } on FirebaseException catch (e) {
       switch (e.code) {
         case 'email-already-in-use':
