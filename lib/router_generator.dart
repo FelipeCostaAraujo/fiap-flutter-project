@@ -45,8 +45,9 @@ class RouteGenerator {
 
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(builder: (_) {
-      return const Scaffold(
-        body: Center(
+      return Scaffold(
+        appBar: AppBar(),
+        body: const Center(
           child: Text('Erro de redirecionamento'),
         ),
       );
