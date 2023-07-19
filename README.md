@@ -1,4 +1,5 @@
-# 1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / MARCELO PINHEIRO MONTANHER
+# Trabalho final flutter
+## 1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / MARCELO PINHEIRO MONTANHER
 
 ## Lista de tarefas
  - [ ] (2pts) Tela de Login e Cadastro separadas. O app deve ter uma tela de Splash também, nessa tela deve ser verificado se o usuário já realizou o login, caso já tenha feito o login, redirecionar diretamente para a home da aplicação
