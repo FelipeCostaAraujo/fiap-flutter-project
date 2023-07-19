@@ -9,9 +9,9 @@
  - [ ] (2pts) Qualidade do app, pontos de vista do usuário final
 
 ## Descrição do projeto
-# O projeto tem login com o firebase, salver os filmes favoritos e ter informacoes de perfil do usuario,
-# Usa a api the movie db para listar os filmes e detalhes dos filmes.
-# Precisa de um arquivo dentro de core/utils chamado settings.dart para funcionar o the movie db.
+- O projeto tem login com o firebase, salver os filmes favoritos e ter informacoes de perfil do usuario,
+- Usa a api the movie db para listar os filmes e detalhes dos filmes.
+- Precisa de um arquivo dentro de core/utils chamado settings.dart para funcionar o the movie db.
 
 ## Descrição do arquivo settings.dart
 
