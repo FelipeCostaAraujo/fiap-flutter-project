@@ -21,7 +21,10 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Filmes',style: TextStyle(color: Colors.white),),
+        title: const Text(
+          'Filmes',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.deepPurple,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
@@ -70,7 +73,8 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                       onTap: () async {
                         await FirebaseAuth.instance.signOut();
                         if (context.mounted) {
-                          navigateTo(AuthScreen.routeName, context, clear: true);
+                          navigateTo(AuthScreen.routeName, context,
+                              clear: true);
                         }
                       },
                     ),

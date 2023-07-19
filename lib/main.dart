@@ -15,6 +15,7 @@ void main() async {
   SplashServiceLocator.setup();
   HomeServiceLocator.setup();
   MovieServiceLocator.setup();
+  SignUpServiceLocator.setup();
 
   runApp(const MyApp());
 }

@@ -24,7 +24,7 @@ class RouteGenerator {
 
       case SignUpScreen.routeName:
         return MaterialPageRoute(
-          builder: (_) => const SignUpScreen(),
+          builder: (_) => SignUpCubitProvider(child: SignUpContainer()),
         );
 
       case MovieScreen.routeName:

@@ -23,9 +23,9 @@ class RemoteProductionCompaniesModel {
   }
 
   ProductionCompaniesEntity toEntity() => ProductionCompaniesEntity(
-    id: id,
-    logoPath: logoPath,
-    name: name,
-    originCountry: originCountry,
-  );
+        id: id,
+        logoPath: logoPath,
+        name: name,
+        originCountry: originCountry,
+      );
 }

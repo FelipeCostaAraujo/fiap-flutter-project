@@ -16,8 +16,8 @@ class RemoteGenresModel {
     );
   }
 
-  GenresEntity toEntity () => GenresEntity(
-    id: id,
-    name: name,
-  );
+  GenresEntity toEntity() => GenresEntity(
+        id: id,
+        name: name,
+      );
 }

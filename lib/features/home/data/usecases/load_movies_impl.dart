@@ -17,8 +17,9 @@ class LoadMoviesImpl implements LoadMovies {
       final httpResponse = await httpClient.request(url: url, method: 'get');
       return List.generate(
         httpResponse["results"].length,
-        (index) => RemoteMovieDetailModel.fromJson(httpResponse["results"][index])
-            .toEntity(),
+        (index) =>
+            RemoteMovieDetailModel.fromJson(httpResponse["results"][index])
+                .toEntity(),
       );
     } on DomainError catch (error) {
       throw error == DomainError.accessDenied

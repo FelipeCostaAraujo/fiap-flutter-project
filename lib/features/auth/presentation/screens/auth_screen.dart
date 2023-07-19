@@ -12,7 +12,8 @@ class AuthScreen extends StatefulWidget {
   State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> with NavigationManager {
+class _AuthScreenState extends State<AuthScreen>
+    with NavigationManager, KeyboardManager {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final _emailController = TextEditingController();
@@ -30,81 +31,87 @@ class _AuthScreenState extends State<AuthScreen> with NavigationManager {
         ),
         backgroundColor: Theme.of(context).primaryColor.withOpacity(0.15),
       ),
-      body: BlocConsumer<AuthCubit, AuthCubitState>(
-        listener: (context, state) {
-          if (state.status == AuthCubitStateStatus.loading) {
-            showLoading(context);
-          }
-          if (state.status == AuthCubitStateStatus.error) {
-            hideLoading(context);
-            showError(context, state.error ?? "Erro desconhecido");
-          }
-          if (state.status == AuthCubitStateStatus.authenticated) {
-            navigateTo(HomeScreen.routeName, context);
-          }
-        },
-        builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary,
-                        width: 2,
+      body: InkWell(
+        splashFactory: NoSplash.splashFactory,
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
+        onTap: () => hideKeyboard(context),
+        child: BlocConsumer<AuthCubit, AuthCubitState>(
+          listener: (context, state) {
+            if (state.status == AuthCubitStateStatus.loading) {
+              showLoading(context);
+            }
+            if (state.status == AuthCubitStateStatus.error) {
+              hideLoading(context);
+              showError(context, state.error ?? "Erro desconhecido");
+            }
+            if (state.status == AuthCubitStateStatus.authenticated) {
+              navigateTo(HomeScreen.routeName, context);
+            }
+          },
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      borderRadius: BorderRadius.circular(16),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
+                    onChanged: (newEmail) {},
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: _passwordController,
+                    onChanged: (newPassword) {},
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Senha',
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     ),
                   ),
-                  onChanged: (newEmail) {},
-                ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: _passwordController,
-                  onChanged: (newPassword) {},
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Senha',
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary,
-                        width: 2,
+                  const SizedBox(height: 32),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize:
+                          Size(MediaQuery.of(context).size.width * 0.9, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      borderRadius: BorderRadius.circular(16),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
+                    onPressed: () async =>
+                        await context.read<AuthCubit>().signIn(
+                              _emailController.text,
+                              _passwordController.text,
+                            ),
+                    child: const Text('Login'),
                   ),
-                ),
-                const SizedBox(height: 32),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize:
-                        Size(MediaQuery.of(context).size.width * 0.9, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  onPressed: () async => await context.read<AuthCubit>().signIn(
-                        _emailController.text,
-                        _passwordController.text,
-                      ),
-                  child: const Text('Login'),
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              ),
+            );
+          },
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         height: 60,

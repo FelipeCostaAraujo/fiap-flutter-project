@@ -12,8 +12,9 @@ class MoviesListCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.pushNamed(context, MovieScreen.routeName, arguments: movie.id);
+      onTap: () {
+        Navigator.pushNamed(context, MovieScreen.routeName,
+            arguments: movie.id);
       },
       child: Material(
         borderRadius: BorderRadius.circular(16),

@@ -8,7 +8,7 @@ class MovieServiceLocator {
   static GetIt di = GetIt.instance;
   static void setup() {
     di.registerFactory<LoadMovieDetail>(
-          () => LoadMovieDetailImpl(
+      () => LoadMovieDetailImpl(
         httpClient: AuthorizeHttpClientDecorator(),
         url: Settings.movieDbBaseUrl + EndPoints.movieDetails,
       ),

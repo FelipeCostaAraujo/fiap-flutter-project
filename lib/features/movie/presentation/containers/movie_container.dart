@@ -43,8 +43,7 @@ class MovieContainer extends BlocBuilder<MovieCubit, MovieCubitState> {
               case MovieCubitStateStatus.error:
                 return DefaultErrorView(
                   message: state.error!,
-                  onTryAgain: () =>
-                      MovieCubitProvider.of(context).load(id!),
+                  onTryAgain: () => MovieCubitProvider.of(context).load(id!),
                 );
             }
           },
