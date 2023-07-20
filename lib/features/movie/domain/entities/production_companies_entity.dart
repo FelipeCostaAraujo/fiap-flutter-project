@@ -10,4 +10,13 @@ class ProductionCompaniesEntity {
     required this.name,
     required this.originCountry,
   });
+
+  toJson() {
+    return {
+      'id': id,
+      'logo_path': logoPath,
+      'name': name,
+      'origin_country': originCountry,
+    };
+  }
 }

@@ -3,4 +3,11 @@ class GenresEntity {
   final String name;
 
   GenresEntity({required this.id, required this.name});
+
+  toJson() {
+    return {
+      'id': id,
+      'name': name,
+    };
+  }
 }

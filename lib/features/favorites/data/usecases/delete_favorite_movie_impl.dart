@@ -4,16 +4,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/core.dart';
 import '../../domain/usecases/usecases.dart';
 
-class VerifyMovieIsFavoriteImpl implements VerifyMovieIsFavorite {
+class DeleteFavoriteMovieImpl implements DeleteFavoriteMovie {
   @override
-  Future<bool> call({required String id}) async {
+  Future<void> call(int id) async {
     try {
       var user = FirebaseAuth.instance.currentUser!;
-      var movie = await FirebaseFirestore.instance
+
+      await FirebaseFirestore.instance
           .collection('favorites/${user.uid}/movies')
-          .doc(id)
-          .get();
-      return movie['isFavorite'];
+          .doc(id.toString())
+          .delete();
     } on FirebaseException catch (error) {
       switch (error.code) {
         case 'permission-denied':

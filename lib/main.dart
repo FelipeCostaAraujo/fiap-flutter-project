@@ -10,12 +10,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  ///Setup the [AuthServiceLocator] to use the [FirebaseAuthService]
+  ///Setup Service Locators
   AuthServiceLocator.setup();
   SplashServiceLocator.setup();
   HomeServiceLocator.setup();
   MovieServiceLocator.setup();
   SignUpServiceLocator.setup();
+  FavoritesServiceLocator.setup();
 
   runApp(const MyApp());
 }

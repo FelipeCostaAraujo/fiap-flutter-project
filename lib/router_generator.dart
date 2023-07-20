@@ -38,6 +38,11 @@ class RouteGenerator {
         }
         return _errorRoute();
 
+      case FavoritesScreen.routeName:
+        return MaterialPageRoute(
+          builder: (_) => FavoritesCubitProvider(child: FavoritesContainer()),
+        );
+
       default:
         return _errorRoute();
     }

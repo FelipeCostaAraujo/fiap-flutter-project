@@ -13,14 +13,27 @@ class SetFavoriteMovieImpl implements SetFavoriteMovie {
   }) async {
     try {
       var user = FirebaseAuth.instance.currentUser!;
+      if (!isFavorite) {
+        await FirebaseFirestore.instance
+            .collection('favorites/${user.uid}/movies')
+            .doc(movie.id.toString())
+            .delete();
+        return;
+      }
       await FirebaseFirestore.instance
           .collection('favorites/${user.uid}/movies')
           .doc(movie.id.toString())
           .set({
         'id': movie.id,
         'title': movie.title,
-        'posterPath': movie.posterPath,
+        'poster_path': movie.posterPath,
         'isFavorite': isFavorite,
+        'overview': movie.overview,
+        'release_date': movie.releaseDate,
+        'status': movie.status,
+        'genres': movie.genres.map((e) => e.toJson()).toList(),
+        'production_companies':
+            movie.productionCompanies.map((e) => e.toJson()).toList(),
       });
     } on FirebaseException catch (error) {
       switch (error.code) {

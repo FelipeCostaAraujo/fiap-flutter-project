@@ -1,19 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobr1/core/core.dart';
 
-import '../../../../core/core.dart';
-import '../../domain/usecases/usecases.dart';
+import '../../favorites.dart';
 
-class VerifyMovieIsFavoriteImpl implements VerifyMovieIsFavorite {
+class LoadFavoritesMoviesImpl implements LoadFavoritesMovies {
   @override
-  Future<bool> call({required String id}) async {
+  Future<List<FavoriteMovieEntity>> call() async {
     try {
       var user = FirebaseAuth.instance.currentUser!;
-      var movie = await FirebaseFirestore.instance
+      final snapshot = await FirebaseFirestore.instance
           .collection('favorites/${user.uid}/movies')
-          .doc(id)
           .get();
-      return movie['isFavorite'];
+      List<FavoriteMovieEntity> movies = [];
+      for (var element in snapshot.docs) {
+        movies
+            .add(RemoteFavoriteMovieModel.fromJson(element.data()).toEntity());
+      }
+      return movies;
     } on FirebaseException catch (error) {
       switch (error.code) {
         case 'permission-denied':
