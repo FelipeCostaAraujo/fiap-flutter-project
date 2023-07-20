@@ -5,6 +5,7 @@ class FavoriteMovieEntity {
   final String overview;
   final String releaseDate;
   final bool isFavorite;
+  final List<String> genres;
 
   FavoriteMovieEntity({
     required this.id,
@@ -13,5 +14,6 @@ class FavoriteMovieEntity {
     required this.overview,
     required this.releaseDate,
     required this.isFavorite,
+    required this.genres,
   });
 }

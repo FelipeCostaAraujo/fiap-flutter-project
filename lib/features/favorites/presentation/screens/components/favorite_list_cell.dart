@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:mobr1/features/features.dart';
 
 class FavoriteListCell extends StatelessWidget {
@@ -48,25 +47,7 @@ class FavoriteListCell extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    RichText(
-                      text: TextSpan(
-                        text: "Lançamento: ",
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: DateFormat('dd/MM/yyyy').format(
-                        DateTime.parse(movie.releaseDate),
-                      ),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    textBuilder("Generos: ", movie.genres.join(", ")),
                   ],
                 ),
               ),
@@ -77,6 +58,26 @@ class FavoriteListCell extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget textBuilder(String title, String text) {
+    return RichText(
+      text: TextSpan(
+        text: title,
+        style: const TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        children: <TextSpan>[
+          TextSpan(
+            text: text,
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -24,6 +24,7 @@ class FavoritesContainer
                           isFavorite: favorite.isFavorite,
                           posterPath: favorite.posterPath,
                           overview: favorite.overview,
+                          genres: favorite.genres,
                         ),
                       )
                       .toList(),

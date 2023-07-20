@@ -7,6 +7,7 @@ class FavoritesViewModel {
   final String overview;
   final String releaseDate;
   final bool isFavorite;
+  final List<String> genres;
 
   FavoritesViewModel({
     required this.id,
@@ -15,6 +16,7 @@ class FavoritesViewModel {
     required this.overview,
     required this.releaseDate,
     required this.isFavorite,
+    required this.genres,
   });
 
   toEntity() {
@@ -25,6 +27,7 @@ class FavoritesViewModel {
       overview: overview,
       releaseDate: releaseDate,
       isFavorite: isFavorite,
+      genres: genres,
     );
   }
 }

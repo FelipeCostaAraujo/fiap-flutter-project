@@ -7,14 +7,17 @@ class RemoteFavoriteMovieModel {
   final String overview;
   final String releaseDate;
   final bool isFavorite;
+  final List<String> genres;
 
-  RemoteFavoriteMovieModel(
-      {required this.id,
-      required this.title,
-      required this.posterPath,
-      required this.overview,
-      required this.releaseDate,
-      required this.isFavorite});
+  RemoteFavoriteMovieModel({
+    required this.id,
+    required this.title,
+    required this.posterPath,
+    required this.overview,
+    required this.releaseDate,
+    required this.isFavorite,
+    required this.genres,
+  });
 
   factory RemoteFavoriteMovieModel.fromJson(Map<String, dynamic> json) {
     return RemoteFavoriteMovieModel(
@@ -24,6 +27,9 @@ class RemoteFavoriteMovieModel {
       overview: json['overview'],
       releaseDate: json['release_date'],
       isFavorite: json['isFavorite'],
+      genres: List<String>.from(
+        json['genres'].map((genre) => genre['name']).toList(),
+      ),
     );
   }
 
@@ -35,6 +41,7 @@ class RemoteFavoriteMovieModel {
       'overview': overview,
       'release_date': releaseDate,
       'isFavorite': isFavorite,
+      'genres': genres.map((genre) => {'name': genre}).toList(),
     };
   }
 
@@ -46,6 +53,7 @@ class RemoteFavoriteMovieModel {
       overview: overview,
       releaseDate: releaseDate,
       isFavorite: isFavorite,
+      genres: genres,
     );
   }
 }
