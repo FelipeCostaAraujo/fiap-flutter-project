@@ -6,7 +6,7 @@ mixin NavigationManager {
       Navigator.of(context)
           .pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false);
     } else {
-      Navigator.of(context).pushNamed(routeName);
+      Navigator.of(context).pushReplacementNamed(routeName);
     }
   }
 }

@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                         ],
                       ),
                       onTap: () async {
-                        navigateTo(FavoritesScreen.routeName, context);
+                        Navigator.of(context).pushNamed(FavoritesScreen.routeName);
                       },
                     ),
                     ListTile(
