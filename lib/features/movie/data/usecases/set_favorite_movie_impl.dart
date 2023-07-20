@@ -14,9 +14,7 @@ class SetFavoriteMovieImpl implements SetFavoriteMovie {
     try {
       var user = FirebaseAuth.instance.currentUser!;
       await FirebaseFirestore.instance
-          .collection('favorites')
-          .doc(user.uid)
-          .collection(movie.id.toString())
+          .collection('favorites/${user.uid}/movies')
           .doc(movie.id.toString())
           .set({
         'id': movie.id,

@@ -10,11 +10,8 @@ class VerifyMovieIsFavoriteImpl implements VerifyMovieIsFavorite {
     try {
       var user = FirebaseAuth.instance.currentUser!;
       var movie = await FirebaseFirestore.instance
-          .collection('favorites')
-          .doc(user.uid)
-          .collection(id)
-          .get();
-      return movie.docs[0]['isFavorite'];
+          .collection('favorites/${user.uid}/movies').doc(id).get();
+      return movie['isFavorite'];
     } on FirebaseException catch (error) {
       switch (error.code) {
         case 'permission-denied':
