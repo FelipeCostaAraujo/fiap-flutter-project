@@ -15,6 +15,7 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen>
     with NavigationManager, KeyboardManager {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final formKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -26,10 +27,10 @@ class _AuthScreenState extends State<AuthScreen>
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          'Bem vindo!',
-          style: TextStyle(color: Colors.deepPurple),
+          'Login',
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.15),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: InkWell(
         splashFactory: NoSplash.splashFactory,
@@ -51,73 +52,115 @@ class _AuthScreenState extends State<AuthScreen>
           builder: (context, state) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 2,
+              child: Form(
+                key: formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    onChanged: (newEmail) {},
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: _passwordController,
-                    onChanged: (newPassword) {},
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Senha',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 2,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                        borderRadius: BorderRadius.circular(16),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
+                      onChanged: (newEmail) {},
+                      validator: (email) {
+                        if (email == null || email.isEmpty) {
+                          return 'Email obrigatório';
+                        }
+                        if (!email.contains('@')) {
+                          return 'Email inválido';
+                        }
+                        return null;
+                      },
                     ),
-                  ),
-                  const SizedBox(height: 32),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      fixedSize:
-                          Size(MediaQuery.of(context).size.width * 0.9, 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _passwordController,
+                      onChanged: (newPassword) {},
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: 'Senha',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
                       ),
+                      validator: (password) {
+                        if (password == null || password.isEmpty) {
+                          return 'Senha obrigatória';
+                        }
+                        if (password.length < 6) {
+                          return 'Senha deve ter no mínimo 6 caracteres';
+                        }
+                        return null;
+                      },
                     ),
-                    onPressed: () async =>
-                        await context.read<AuthCubit>().signIn(
-                              _emailController.text,
-                              _passwordController.text,
-                            ),
-                    child: const Text('Login'),
-                  ),
-                ],
+                    const SizedBox(height: 32),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        fixedSize:
+                            Size(MediaQuery.of(context).size.width * 0.9, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed: () async {
+                        if (_emailController.text.isEmpty ||
+                            _passwordController.text.isEmpty) {
+                          showSnackMessage(context, 'Preencha todos os campos');
+                          return;
+                        }
+                        if (formKey.currentState!.validate()) {
+                          await context.read<AuthCubit>().signIn(
+                                _emailController.text,
+                                _passwordController.text,
+                              );
+                        }
+                      },
+                      child: const Text('Login'),
+                    ),
+                  ],
+                ),
               ),
             );
           },
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Theme.of(context).primaryColor,
         height: 60,
         child: TextButton(
+          style: TextButton.styleFrom(
+            elevation: 2,
+            foregroundColor: Colors.white,
+            backgroundColor: Theme.of(context).primaryColor.withOpacity(0.5),
+            disabledBackgroundColor: Theme.of(context)
+                .primaryColor
+                .withOpacity(0.5)
+                .withOpacity(0.5),
+          ),
           onPressed: () => Navigator.pushNamed(context, SignUpScreen.routeName),
-          child: const Text('Nao tenho conta, criar uma'),
+          child: const Text(
+            'Não tem uma conta? Cadastre-se!',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ),
     );

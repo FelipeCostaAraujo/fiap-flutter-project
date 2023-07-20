@@ -1,5 +1,5 @@
 class EndPoints {
-  static String movies = "/discover/movie";
+  static String movies = "/movie";
   static String movieDetails = "/movie/";
   static String movieVideos = "/movie/";
   static String movieReviews = "/movie/";

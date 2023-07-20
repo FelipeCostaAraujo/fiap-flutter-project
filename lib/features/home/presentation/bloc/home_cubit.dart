@@ -32,6 +32,24 @@ class HomeCubit extends Cubit<HomeCubitState> {
       );
     }
   }
+
+  Future<void> loadMoviesByOptions(MoviesOptions options) async {
+    try {
+      final moviesList = await loadMovies.call(options: options);
+
+      emit(state.copyWith(
+        status: HomeCubitStateStatus.loaded,
+        moviesList: moviesList,
+      ));
+    } on DomainError catch (error) {
+      emit(
+        state.copyWith(
+          status: HomeCubitStateStatus.error,
+          error: error.description,
+        ),
+      );
+    }
+  }
 }
 
 class HomeCubitProvider extends BlocProvider<HomeCubit> {

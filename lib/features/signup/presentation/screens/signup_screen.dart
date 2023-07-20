@@ -24,7 +24,12 @@ class _SignUpScreenState extends State<SignUpScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cadastro de Usuário'),
+        title: const Text(
+          'Cadastro',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: BlocConsumer<SignUpCubit, SignUpCubitState>(
           listener: (context, state) {
@@ -89,9 +94,12 @@ class _SignUpScreenState extends State<SignUpScreen>
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Email é obrigatório';
+                      validator: (email) {
+                        if (email == null || email.isEmpty) {
+                          return 'Email obrigatório';
+                        }
+                        if (!email.contains('@')) {
+                          return 'Email inválido';
                         }
                         return null;
                       },
@@ -113,9 +121,12 @@ class _SignUpScreenState extends State<SignUpScreen>
                         ),
                       ),
                       obscureText: true,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Senha é obrigatória';
+                      validator: (password) {
+                        if (password == null || password.isEmpty) {
+                          return 'Senha obrigatória';
+                        }
+                        if (password.length < 6) {
+                          return 'Senha deve ter no mínimo 6 caracteres';
                         }
                         return null;
                       },

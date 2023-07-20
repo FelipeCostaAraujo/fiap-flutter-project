@@ -17,16 +17,68 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with NavigationManager {
+  MoviesOptions? selectedMenu;
+  bool moviesGrid = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
-          'Filmes',
+          'Lista de Filmes',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.deepPurple,
         iconTheme: const IconThemeData(color: Colors.white),
+        actions: [
+          IconButton(
+            icon: moviesGrid
+                ? const Icon(Icons.list)
+                : const Icon(Icons.grid_view_sharp),
+            onPressed: () async {
+              setState(() {
+                moviesGrid = !moviesGrid;
+              });
+            },
+          ),
+          PopupMenuButton<MoviesOptions>(
+            initialValue: selectedMenu,
+            // Callback that sets the selected popup menu item.
+            onSelected: (MoviesOptions item) {
+              setState(() {
+                selectedMenu = item;
+              });
+            },
+            itemBuilder: (BuildContext context) =>
+                <PopupMenuEntry<MoviesOptions>>[
+              PopupMenuItem<MoviesOptions>(
+                value: MoviesOptions.moreRecent,
+                child: const Text('Mais recentes'),
+                onTap: () async =>
+                    await context.read<HomeCubit>().loadMoviesByOptions(
+                          MoviesOptions.moreRecent,
+                        ),
+              ),
+              PopupMenuItem<MoviesOptions>(
+                value: MoviesOptions.morePopular,
+                child: const Text('Mais populares'),
+                onTap: () async =>
+                    await context.read<HomeCubit>().loadMoviesByOptions(
+                          MoviesOptions.morePopular,
+                        ),
+              ),
+              PopupMenuItem<MoviesOptions>(
+                value: MoviesOptions.moreRated,
+                child: const Text('Maior avaliação'),
+                onTap: () async =>
+                    await context.read<HomeCubit>().loadMoviesByOptions(
+                          MoviesOptions.moreRated,
+                        ),
+              ),
+            ],
+          ),
+        ],
       ),
       drawer: SafeArea(
         bottom: false,
@@ -132,17 +184,9 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
             showLoading(context);
           }
           if (state.status == HomeCubitStateStatus.loaded) {
-            return ListView.separated(
-              itemCount: widget.moviesList.length,
-              padding: const EdgeInsets.all(16),
-              separatorBuilder: (_, __) => const SizedBox(height: 16),
-              itemBuilder: (context, index) {
-                final movie = widget.moviesList[index];
-                return MoviesListCell(
-                  movie: movie,
-                );
-              },
-            );
+            return moviesGrid
+                ? MoviesGridView(moviesList: widget.moviesList)
+                : MoviesListView(moviesList: widget.moviesList);
           } else {
             return const SizedBox.shrink();
           }
