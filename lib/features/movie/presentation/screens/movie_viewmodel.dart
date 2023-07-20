@@ -1,3 +1,5 @@
+import '../../movie.dart';
+
 class MovieViewModel {
   final int id;
   final String title;
@@ -5,6 +7,7 @@ class MovieViewModel {
   final String overview;
   final String status;
   final String releaseDate;
+  bool isFavorite;
   final List<GenresViewModel> genres;
   final List<ProductionCompaniesViewModel> productionCompanies;
 
@@ -15,9 +18,30 @@ class MovieViewModel {
     required this.overview,
     required this.status,
     required this.releaseDate,
+    this.isFavorite = false,
     required this.genres,
     required this.productionCompanies,
   });
+
+  toEntity() {
+    return MovieDetailEntity(
+      id: id,
+      title: title,
+      posterPath: posterPath,
+      overview: overview,
+      status: status,
+      releaseDate: releaseDate,
+      genres: genres.map((e) => GenresEntity(id: e.id, name: e.name)).toList(),
+      productionCompanies: productionCompanies
+          .map((e) => ProductionCompaniesEntity(
+                id: e.id,
+                logoPath: e.logoPath,
+                name: e.name,
+                originCountry: e.originCountry,
+              ))
+          .toList(),
+    );
+  }
 }
 
 class ProductionCompaniesViewModel {

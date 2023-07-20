@@ -5,7 +5,7 @@ import '../home_viewmodel.dart';
 
 class MoviesListView extends StatelessWidget {
   final List<HomeViewModel> moviesList;
-  const MoviesListView({required this.moviesList,super.key});
+  const MoviesListView({required this.moviesList, super.key});
 
   @override
   Widget build(BuildContext context) {

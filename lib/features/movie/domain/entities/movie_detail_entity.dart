@@ -7,6 +7,7 @@ class MovieDetailEntity {
   final String overview;
   final String status;
   final String releaseDate;
+  bool isFavorite;
   final List<GenresEntity> genres;
   final List<ProductionCompaniesEntity> productionCompanies;
 
@@ -17,6 +18,7 @@ class MovieDetailEntity {
     required this.overview,
     required this.status,
     required this.releaseDate,
+    this.isFavorite = false,
     required this.genres,
     required this.productionCompanies,
   });

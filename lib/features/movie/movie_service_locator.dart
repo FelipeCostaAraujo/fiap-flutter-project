@@ -13,5 +13,11 @@ class MovieServiceLocator {
         url: Settings.movieDbBaseUrl + EndPoints.movieDetails,
       ),
     );
+    di.registerFactory<SetFavoriteMovie>(
+      () => SetFavoriteMovieImpl(),
+    );
+    di.registerFactory<VerifyMovieIsFavorite>(
+      () => VerifyMovieIsFavoriteImpl(),
+    );
   }
 }

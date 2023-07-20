@@ -23,6 +23,7 @@ class MovieContainer extends BlocBuilder<MovieCubit, MovieCubitState> {
                     posterPath:
                         Settings.movieDbImagesUrl + state.movie!.posterPath,
                     releaseDate: state.movie!.releaseDate,
+                    isFavorite: state.movie!.isFavorite,
                     productionCompanies: state.movie!.productionCompanies
                         .map(
                           (e) => ProductionCompaniesViewModel(
