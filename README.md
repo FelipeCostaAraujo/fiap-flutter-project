@@ -9,7 +9,7 @@ _1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / MARCELO PINHEIRO MONT
   redirecionar diretamente para a home da aplicação
 - [x] (2pts) Integração com banco de dados do Firebase ou consumo de alguma API (pode ser os dois).
 - [x] (1pt) Presença de listagem de informações (ListView)
-- [ ] (1pt) Documentação com informações gerais sobre a aplicação, objetivo do projeto, layout,
+- [x] (1pt) Documentação com informações gerais sobre a aplicação, objetivo do projeto, layout,
   instruções para testar o projeto (se necessário)
 - [x] (2pts) Arquitetura: Separação de camadas, utilização do Bloc/Cubit
 - [ ] (2pts) Qualidade do app, pontos de vista do usuário final
@@ -21,7 +21,7 @@ Os usuários poderão realizar o login e, após autenticados, poderão salvar se
 visualizar informações de perfil personalizadas. O app também utiliza a API The Movie DB para listar
 filmes e mostrar detalhes sobre cada filme.
 
-## Testar projeto
+## Instruções para Testar o Projeto
 
 Para testar o projeto, siga os passos abaixo:
 
@@ -60,3 +60,5 @@ API The Movie DB
 |                Detalhes                 |          Detalhe Favoritar          |                Lista favoritos                 |
 |:---------------------------------------:|:-----------------------------------:|:----------------------------------------------:|
 | <img src="docs/detalhes.gif" width=80%> | <img src="docs/like.gif" width=80%> | <img src="docs/lista-favoritos.gif" width=80%> |
+
+##
