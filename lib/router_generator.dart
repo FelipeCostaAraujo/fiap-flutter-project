@@ -48,6 +48,11 @@ class RouteGenerator {
           builder: (_) => SettingsCubitProvider(child: SettingsContainer()),
         );
 
+      case ProfileScreen.routeName:
+        return MaterialPageRoute(
+          builder: (_) => ProfileCubitProvider(child: ProfileContainer()),
+        );
+
       default:
         return _errorRoute();
     }

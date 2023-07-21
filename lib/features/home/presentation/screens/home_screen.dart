@@ -123,7 +123,10 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                           Icon(Icons.person),
                         ],
                       ),
-                      onTap: () async {},
+                      onTap: () async {
+                        Navigator.of(context)
+                            .pushNamed(ProfileScreen.routeName);
+                      },
                     ),
                     ListTile(
                       title: const Row(

@@ -19,6 +19,7 @@ void main() async {
   SignUpServiceLocator.setup();
   FavoritesServiceLocator.setup();
   SettingsServiceLocator.setup();
+  ProfileServiceLocator.setup();
 
   runApp(const MyApp());
 }

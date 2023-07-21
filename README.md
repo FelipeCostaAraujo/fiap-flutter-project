@@ -1,6 +1,6 @@
 # Trabalho final flutter
 
-_1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / MARCELO PINHEIRO MONTANHER_
+_1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / [MARCELO PINHEIRO MONTANHER](https://github.com/marcelopmont)_
 
 ## Lista de tarefas
 
@@ -12,7 +12,7 @@ _1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / MARCELO PINHEIRO MONT
 - [x] (1pt) Documentação com informações gerais sobre a aplicação, objetivo do projeto, layout,
   instruções para testar o projeto (se necessário)
 - [x] (2pts) Arquitetura: Separação de camadas, utilização do Bloc/Cubit
-- [ ] (2pts) Qualidade do app, pontos de vista do usuário final
+- [x] (2pts) Qualidade do app, pontos de vista do usuário final
 
 ## Descrição do projeto
 
