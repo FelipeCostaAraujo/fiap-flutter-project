@@ -52,3 +52,7 @@ API The Movie DB
 |               Tela de login               |               Tela de Cadastro               |                    Home                     |
 |:-----------------------------------------:|:--------------------------------------------:|:-------------------------------------------:|
 | <img src="docs/tela-login.gif" width=80%> | <img src="docs/tela-cadastro.gif" width=80%> | <img src="docs/lista-filmes.gif" width=80%> |
+
+|                 Home modo 2                  |
+|:--------------------------------------------:|
+| <img src="docs/lista-filmes2.gif" width=80%> |
