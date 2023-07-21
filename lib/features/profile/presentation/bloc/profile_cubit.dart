@@ -6,7 +6,7 @@ import '../../../../core/errors/domain_errors.dart';
 import '../../profile.dart';
 
 class ProfileCubit extends Cubit<ProfileCubitState> {
-  ProfileCubit({required this.loadProfile,required this.saveProfile})
+  ProfileCubit({required this.loadProfile, required this.saveProfile})
       : super(
           const ProfileCubitState(status: ProfileCubitStateStatus.loading),
         );
@@ -15,7 +15,7 @@ class ProfileCubit extends Cubit<ProfileCubitState> {
   SaveProfile saveProfile;
 
   void onInit() async {
-    try{
+    try {
       final profile = await loadProfile.call();
       emit(state.copyWith(
         status: ProfileCubitStateStatus.loaded,
@@ -30,7 +30,7 @@ class ProfileCubit extends Cubit<ProfileCubitState> {
   }
 
   Future<void> saveProfileData(ProfileEntity profileEntity) async {
-    try{
+    try {
       await saveProfile.call(profileEntity);
       emit(state.copyWith(
         status: ProfileCubitStateStatus.loaded,
@@ -52,9 +52,9 @@ class ProfileCubitProvider extends BlocProvider<ProfileCubit> {
   }) : super(
           key: key,
           create: (_) => ProfileCubit(
-            saveProfile: GetIt.instance<SaveProfile>(),
-            loadProfile: GetIt.instance<LoadProfile>()
-          )..onInit(),
+              saveProfile: GetIt.instance<SaveProfile>(),
+              loadProfile: GetIt.instance<LoadProfile>())
+            ..onInit(),
           child: child,
         );
 

@@ -8,5 +8,4 @@ class ProfileEntity {
     required this.email,
     this.imageUrl,
   });
-
 }

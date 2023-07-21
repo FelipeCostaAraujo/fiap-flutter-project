@@ -10,10 +10,10 @@ import '../../domain/entities/entities.dart';
 class SaveProfileImpl implements SaveProfile {
   @override
   Future<void> call(ProfileEntity profileEntity) async {
-    try{
+    try {
       var user = FirebaseAuth.instance.currentUser!;
       String? url;
-      if(profileEntity.imageUrl != null){
+      if (profileEntity.imageUrl != null) {
         url = await saveStorage(profileEntity, user.uid);
       }
       await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
@@ -31,15 +31,16 @@ class SaveProfileImpl implements SaveProfile {
     }
   }
 
-  Future<String?> saveStorage(ProfileEntity profileEntity, String userId) async {
-    try{
+  Future<String?> saveStorage(
+      ProfileEntity profileEntity, String userId) async {
+    try {
       final storage = FirebaseStorage.instance;
       final ref = storage.ref('profile/$userId.png');
       await ref.putFile(io.File(profileEntity.imageUrl!));
       final url = await ref.getDownloadURL();
       return url;
-    } on FirebaseException catch(e) {
-      switch(e.code){
+    } on FirebaseException catch (e) {
+      switch (e.code) {
         case 'permission-denied':
           throw DomainError.accessDenied;
         default:
@@ -47,5 +48,4 @@ class SaveProfileImpl implements SaveProfile {
       }
     }
   }
-
 }

@@ -12,7 +12,8 @@ class LoadProfileImpl implements LoadProfile {
     try {
       final user = FirebaseAuth.instance.currentUser!;
       final profileUser = await FirebaseFirestore.instance
-          .collection("users").doc(user.uid)
+          .collection("users")
+          .doc(user.uid)
           .get();
       var url = await loadStorage(user.uid);
       return ProfileEntity(
@@ -31,12 +32,12 @@ class LoadProfileImpl implements LoadProfile {
   }
 
   Future<String?> loadStorage(String userId) async {
-    try{
+    try {
       final storage = FirebaseStorage.instance;
       final ref = storage.ref('profile/$userId.png');
       final url = await ref.getDownloadURL();
       return url;
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }

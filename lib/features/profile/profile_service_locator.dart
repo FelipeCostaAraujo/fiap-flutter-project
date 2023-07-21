@@ -4,7 +4,7 @@ import './profile.dart';
 class ProfileServiceLocator {
   static GetIt di = GetIt.instance;
   static void setup() {
-     di.registerFactory<LoadProfile>(() => LoadProfileImpl());
-     di.registerFactory<SaveProfile>(() => SaveProfileImpl());
+    di.registerFactory<LoadProfile>(() => LoadProfileImpl());
+    di.registerFactory<SaveProfile>(() => SaveProfileImpl());
   }
 }

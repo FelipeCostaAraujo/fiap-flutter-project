@@ -12,8 +12,8 @@ class ProfileViewModel {
   });
 
   toEntity() => ProfileEntity(
-    name: name,
-    email: email,
-    imageUrl: picture,
-  );
+        name: name,
+        email: email,
+        imageUrl: picture,
+      );
 }
