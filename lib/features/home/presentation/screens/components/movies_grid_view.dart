@@ -4,7 +4,7 @@ import './componets.dart';
 import '../home_viewmodel.dart';
 
 class MoviesGridView extends StatelessWidget {
-  final List<HomeViewModel> moviesList;
+  final List<MovieModel> moviesList;
   const MoviesGridView({required this.moviesList, super.key});
 
   @override
