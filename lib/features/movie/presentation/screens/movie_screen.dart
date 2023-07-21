@@ -102,8 +102,8 @@ class _MovieScreenState extends State<MovieScreen> {
         RichText(
           text: TextSpan(
             text: title,
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: Theme.of(context).textTheme.titleSmall?.color,
               fontWeight: FontWeight.bold,
             ),
             children: <TextSpan>[
