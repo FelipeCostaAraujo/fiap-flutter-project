@@ -43,6 +43,11 @@ class RouteGenerator {
           builder: (_) => FavoritesCubitProvider(child: FavoritesContainer()),
         );
 
+      case SettingsScreen.routeName:
+        return MaterialPageRoute(
+          builder: (_) => SettingsCubitProvider(child: SettingsContainer()),
+        );
+
       default:
         return _errorRoute();
     }

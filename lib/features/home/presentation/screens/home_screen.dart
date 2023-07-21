@@ -110,7 +110,8 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                         ],
                       ),
                       onTap: () async {
-                        Navigator.of(context).pushNamed(FavoritesScreen.routeName);
+                        Navigator.of(context)
+                            .pushNamed(FavoritesScreen.routeName);
                       },
                     ),
                     ListTile(
@@ -122,9 +123,7 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                           Icon(Icons.person),
                         ],
                       ),
-                      onTap: () async {
-                        //navigateTo(ProfileScreen.routeName, context);
-                      },
+                      onTap: () async {},
                     ),
                     ListTile(
                       title: const Row(
@@ -136,7 +135,8 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                         ],
                       ),
                       onTap: () async {
-                        //navigateTo(Favorites.routeName, context);
+                        Navigator.of(context)
+                            .pushNamed(SettingsScreen.routeName);
                       },
                     ),
                   ],
