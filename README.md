@@ -49,6 +49,6 @@ API The Movie DB
 
 ## Demonstração
 
-|               Tela de login               |
-|:-----------------------------------------:| 
-| <img src="docs/tela-login.gif" width=80%> |
+|               Tela de login               |               Tela de Cadastro               |
+|:-----------------------------------------:|:--------------------------------------------:|
+| <img src="docs/tela-login.gif" width=80%> | <img src="docs/tela-cadastro.gif" width=80%> |
