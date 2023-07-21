@@ -57,6 +57,6 @@ API The Movie DB
 |:--------------------------------------------:|:---------------------------------------------:|:-------------------------------------------:|
 | <img src="docs/lista-filmes.webp" width=80%> | <img src="docs/lista-filmes2.webp" width=80%> | <img src="docs/home-filtro.webp" width=80%> |
 
-|                Detalhes                 |          Detalhe Favoritar          |                Lista favoritos                 |
-|:---------------------------------------:|:-----------------------------------:|:----------------------------------------------:|
+|                 Detalhes                 |          Detalhe Favoritar          |                 Lista favoritos                 |
+|:----------------------------------------:|:-----------------------------------:|:-----------------------------------------------:|
 | <img src="docs/detalhes.gif" width=100%> | <img src="docs/like.gif" width=50%> | <img src="docs/lista-favoritos.gif" width=100%> |
