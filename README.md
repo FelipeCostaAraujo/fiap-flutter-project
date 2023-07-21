@@ -1,20 +1,37 @@
 # Trabalho final flutter
+
 _1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / MARCELO PINHEIRO MONTANHER_
 
 ## Lista de tarefas
-- [x] (2pts) Tela de Login e Cadastro separadas. O app deve ter uma tela de Splash também, nessa tela deve ser verificado se o usuário já realizou o login, caso já tenha feito o login, redirecionar diretamente para a home da aplicação
+
+- [x] (2pts) Tela de Login e Cadastro separadas. O app deve ter uma tela de Splash também, nessa
+  tela deve ser verificado se o usuário já realizou o login, caso já tenha feito o login,
+  redirecionar diretamente para a home da aplicação
 - [x] (2pts) Integração com banco de dados do Firebase ou consumo de alguma API (pode ser os dois).
 - [x] (1pt) Presença de listagem de informações (ListView)
-- [ ] (1pt) Documentação com informações gerais sobre a aplicação, objetivo do projeto, layout, instruções para testar o projeto (se necessário)
+- [ ] (1pt) Documentação com informações gerais sobre a aplicação, objetivo do projeto, layout,
+  instruções para testar o projeto (se necessário)
 - [x] (2pts) Arquitetura: Separação de camadas, utilização do Bloc/Cubit
 - [ ] (2pts) Qualidade do app, pontos de vista do usuário final
 
 ## Descrição do projeto
-- O projeto tem login com o firebase, salver os filmes favoritos e ter informacoes de perfil do usuario,
-- Usa a api the movie db para listar os filmes e detalhes dos filmes.
-- Precisa de um arquivo dentro de core/utils chamado settings.dart para funcionar o the movie db.
 
-## Descrição do arquivo settings.dart
+O projeto consiste em um aplicativo com recursos de login utilizando o Firebase para autenticação.
+Os usuários poderão realizar o login e, após autenticados, poderão salvar seus filmes favoritos e
+visualizar informações de perfil personalizadas. O app também utiliza a API The Movie DB para listar
+filmes e mostrar detalhes sobre cada filme.
+
+## Testar projeto
+
+Para testar o projeto, siga os passos abaixo:
+
+1. Verifique se o Flutter e Dart estão configurados em seu ambiente e IDE.
+2. Clone o projeto e abra-o em sua IDE.
+3. Execute o comando `pub get` para baixar todas as dependências necessárias.
+4. Antes de prosseguir, crie um arquivo dentro da pasta `core/utils` chamado `settings.dart`
+   seguindo o modelo abaixo:
+
+### Descrição do arquivo settings.dart
 
 ```dart
 class Settings {
@@ -26,4 +43,4 @@ class Settings {
   static String movieDbToken = "TOKEN";
 }
 ```
-
+Certifique-se de substituir "SUA APIKEY" e "TOKEN" pelas chaves de acesso corretas fornecidas pela API The Movie DB
