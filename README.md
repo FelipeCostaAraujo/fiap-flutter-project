@@ -43,4 +43,12 @@ class Settings {
   static String movieDbToken = "TOKEN";
 }
 ```
-Certifique-se de substituir "SUA APIKEY" e "TOKEN" pelas chaves de acesso corretas fornecidas pela API The Movie DB
+
+Certifique-se de substituir "SUA APIKEY" e "TOKEN" pelas chaves de acesso corretas fornecidas pela
+API The Movie DB
+
+## Demonstração
+
+|               Tela de login               |
+|:-----------------------------------------:| 
+| <img src="docs/tela-login.gif" width=80%> |
