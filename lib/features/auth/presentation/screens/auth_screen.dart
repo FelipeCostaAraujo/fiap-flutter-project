@@ -30,6 +30,7 @@ class _AuthScreenState extends State<AuthScreen>
           'Login',
           style: TextStyle(color: Colors.white),
         ),
+        centerTitle: true,
         backgroundColor: Colors.deepPurple,
       ),
       body: InkWell(

@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mobr1/core/components/components.dart';
 
+import '../../../../core/core.dart';
 import '../../profile.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -14,7 +16,7 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen> with KeyboardManager {
   final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   String? localPicture;
@@ -30,121 +32,125 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
+        centerTitle: true,
         title: const Text('Perfil', style: TextStyle(color: Colors.white)),
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20),
-            Center(
-              child: GestureDetector(
-                onTap: choicePhoto,
-                child: CircleAvatar(
-                  radius: 100,
-                  child: ClipOval(
-                    child: widget.profile.picture.isNotEmpty && localPicture == null
-                        ? Image.network(
-                            widget.profile.picture,
-                            fit: BoxFit.cover,
-                            width: 200,
-                            height: 200,
-                          )
-                        : Image.asset(
-                            localPicture ?? 'assets/images/cat.jpg',
-                            fit: BoxFit.cover,
-                            width: 200,
-                            height: 200,
+      body: GestureDetector(
+        onTap: () => hideKeyboard(context),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+                Center(
+                  child: GestureDetector(
+                    onTap: choicePhoto,
+                    child: CircleAvatar(
+                      radius: 100,
+                      child: ClipOval(
+                        child: widget.profile.picture.isNotEmpty &&
+                                localPicture == null
+                            ? Image.network(widget.profile.picture,
+                                fit: BoxFit.cover, width: 200, height: 200,
+                                errorBuilder: (context, error, stackTrace) {
+                                return imageBuilder();
+                              })
+                            : imageBuilder(),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: nameController,
+                        decoration: InputDecoration(
+                          labelText: 'Nome',
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
                           ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Nome é obrigatório';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        initialValue: widget.profile.email,
+                        enabled: false,
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.grey,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: nameController,
-                    decoration: InputDecoration(
-                      labelText: 'Nome',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize:
+                        Size(MediaQuery.of(context).size.width * 0.9, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Nome é obrigatório';
+                  ),
+                  onPressed: () async {
+                    if (formKey.currentState!.validate()) {
+                      widget.profile.name = nameController.text;
+                      await context
+                          .read<ProfileCubit>()
+                          .saveProfileData(widget.profile.toEntity());
+                      if (context.mounted) {
+                        showSnackMessage(context, "Perfil salvo com sucesso!");
                       }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    initialValue: widget.profile.email,
-                    enabled: false,
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      disabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.grey,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(MediaQuery.of(context).size.width * 0.9, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+                    }
+                  },
+                  child: const Text('Salvar'),
                 ),
-              ),
-              onPressed: () async {
-                if(formKey.currentState!.validate()){
-                  widget.profile.name = nameController.text;
-                  await context.read<ProfileCubit>().saveProfileData(widget.profile.toEntity());
-                  if(context.mounted){
-                    showSnackMessage(context, "Perfil salvo com sucesso!");
-                  }
-                }
-              },
-              child: const Text('Salvar'),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  choicePhoto(){
+  choicePhoto() {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -183,7 +189,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         widget.profile.picture = image.path;
         localPicture = image.path;
+        saveProfile();
       });
     }
+  }
+
+  Future<void> saveProfile() async {
+    await context
+        .read<ProfileCubit>()
+        .saveProfileData(widget.profile.toEntity());
+    if (context.mounted) {
+      showSnackMessage(context, "Foto salva com sucesso");
+    }
+  }
+
+  Widget imageBuilder() {
+    if (localPicture != null) {
+      return Image.file(File(localPicture!),
+          fit: BoxFit.cover,
+          width: 200,
+          height: 200, errorBuilder: (context, error, stackTrace) {
+        return const Icon(Icons.error);
+      });
+    }
+    return Image.asset('assets/images/cat.jpg',
+        fit: BoxFit.cover,
+        width: 200,
+        height: 200, errorBuilder: (context, error, stackTrace) {
+      return const Icon(Icons.error);
+    });
   }
 }

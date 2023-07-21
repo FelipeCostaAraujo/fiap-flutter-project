@@ -39,7 +39,6 @@ class SaveProfileImpl implements SaveProfile {
       final url = await ref.getDownloadURL();
       return url;
     } on FirebaseException catch(e) {
-      print(e);
       switch(e.code){
         case 'permission-denied':
           throw DomainError.accessDenied;

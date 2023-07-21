@@ -28,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen>
           'Cadastro',
           style: TextStyle(color: Colors.white),
         ),
+        centerTitle: true,
         backgroundColor: Colors.deepPurple,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
