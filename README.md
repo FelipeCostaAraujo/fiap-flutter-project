@@ -49,14 +49,14 @@ API The Movie DB
 
 ## Demonstração
 
-|       Splash com usuário salvo        |               Tela de login               |               Tela de Cadastro               |
-|:-------------------------------------:|:-----------------------------------------:|:--------------------------------------------:|
-| <img src="docs/Splash.gif" width=80%> | <img src="docs/tela-login.gif" width=80%> | <img src="docs/tela-cadastro.gif" width=80%> |
+|           Splash com usuário salvo           |               Tela de login               |               Tela de Cadastro               |
+|:--------------------------------------------:|:-----------------------------------------:|:--------------------------------------------:|
+|    <img src="docs/Splash.gif" width=80%>     | <img src="docs/tela-login.gif" width=80%> | <img src="docs/tela-cadastro.gif" width=80%> |
 
 |                     Home                     |                  Home modo 2                  |                Home filtros                 |
 |:--------------------------------------------:|:---------------------------------------------:|:-------------------------------------------:|
 | <img src="docs/lista-filmes.webp" width=80%> | <img src="docs/lista-filmes2.webp" width=80%> | <img src="docs/home-filtro.webp" width=80%> |
 
-|                 Detalhes                 |          Detalhe Favoritar          |                 Lista favoritos                 |
-|:----------------------------------------:|:-----------------------------------:|:-----------------------------------------------:|
-| <img src="docs/detalhes.gif" width=100%> | <img src="docs/like.gif" width=50%> | <img src="docs/lista-favoritos.gif" width=100%> |
+|                   Detalhes                   |          Detalhe Favoritar          |                 Lista favoritos                 |
+|:--------------------------------------------:|:-----------------------------------:|:-----------------------------------------------:|
+|   <img src="docs/detalhes.gif" width=100%>   | <img src="docs/like.gif" width=50%> | <img src="docs/lista-favoritos.gif" width=100%> |
