@@ -28,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen>
           'Cadastro',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.deepPurple,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: BlocConsumer<SignUpCubit, SignUpCubitState>(
