@@ -9,8 +9,8 @@ import 'components/componets.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
 
-  final List<HomeViewModel> moviesList;
-  const HomeScreen({required this.moviesList, super.key});
+  final HomeViewModel model;
+  const HomeScreen({required this.model, super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -44,7 +44,6 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
           ),
           PopupMenuButton<MoviesOptions>(
             initialValue: selectedMenu,
-            // Callback that sets the selected popup menu item.
             onSelected: (MoviesOptions item) {
               setState(() {
                 selectedMenu = item;
@@ -88,16 +87,72 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
               Expanded(
                 child: ListView(
                   children: [
-                    const DrawerHeader(
-                      decoration: BoxDecoration(
+                    DrawerHeader(
+                      decoration: const BoxDecoration(
                         color: Colors.deepPurple,
                       ),
-                      child: Text(
-                        'Filmes Fiap',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                        ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 50,
+                            child: ClipOval(
+                              child: widget.model.userImage.isNotEmpty
+                                  ? Image.network(widget.model.userImage,
+                                      fit: BoxFit.cover,
+                                      width: 200,
+                                      height: 200, errorBuilder:
+                                          (context, error, stackTrace) {
+                                      return Image.asset(
+                                          'assets/images/cat.jpg',
+                                          fit: BoxFit.cover,
+                                          width: 200,
+                                          height: 200, errorBuilder:
+                                              (context, error, stackTrace) {
+                                        return const Icon(Icons.error);
+                                      });
+                                    })
+                                  : Image.asset(
+                                      'assets/images/cat.jpg',
+                                      fit: BoxFit.cover,
+                                      width: 200,
+                                      height: 200,
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                        return const Icon(Icons.error);
+                                      },
+                                    ),
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Filmes Fiap',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 140,
+                                child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    'Bem vindo, ${getFirstWord(widget.model.userName)}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                     ListTile(
@@ -145,7 +200,8 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                   ],
                 ),
               ),
-              Expanded(
+              SizedBox(
+                height: 200,
                 child: ListView(
                   reverse: true,
                   children: [
@@ -188,8 +244,8 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
           }
           if (state.status == HomeCubitStateStatus.loaded) {
             return moviesGrid
-                ? MoviesGridView(moviesList: widget.moviesList)
-                : MoviesListView(moviesList: widget.moviesList);
+                ? MoviesGridView(moviesList: widget.model.movies)
+                : MoviesListView(moviesList: widget.model.movies);
           } else {
             return const SizedBox.shrink();
           }
@@ -198,5 +254,12 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
     );
   }
 
-  _HomeScreenState();
+  String getFirstWord(String input) {
+    if (input.isEmpty) {
+      return '';
+    }
+    List<String> words = input.split(' ');
+    String firstWord = words[0];
+    return firstWord;
+  }
 }

@@ -3,7 +3,7 @@ import '../../../../movie/presentation/screens/movie_screen.dart';
 import '../home_viewmodel.dart';
 
 class MoviesGridCell extends StatelessWidget {
-  final HomeViewModel movie;
+  final MovieModel movie;
   const MoviesGridCell({required this.movie, super.key});
 
   @override

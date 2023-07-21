@@ -7,7 +7,7 @@ class MoviesListCell extends StatelessWidget {
     required this.movie,
   });
 
-  final HomeViewModel movie;
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {

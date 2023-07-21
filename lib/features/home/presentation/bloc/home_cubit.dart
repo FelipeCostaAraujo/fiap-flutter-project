@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../core/errors/errors.dart';
+import '../../../profile/profile.dart';
 import '../../home.dart';
 
 class HomeCubit extends Cubit<HomeCubitState> {
-  HomeCubit({required this.loadMovies})
+  HomeCubit({required this.loadMovies, required this.loadProfile})
       : super(
           const HomeCubitState(
             status: HomeCubitStateStatus.loading,
@@ -14,14 +15,18 @@ class HomeCubit extends Cubit<HomeCubitState> {
         );
 
   LoadMovies loadMovies;
+  LoadProfile loadProfile;
 
   void onInit() async {
     try {
       final moviesList = await loadMovies.call();
+      final profile = await loadProfile.call();
 
       emit(state.copyWith(
         status: HomeCubitStateStatus.loaded,
         moviesList: moviesList,
+        userName: profile.name,
+        userImage: profile.imageUrl,
       ));
     } on DomainError catch (error) {
       emit(
@@ -59,6 +64,7 @@ class HomeCubitProvider extends BlocProvider<HomeCubit> {
   }) : super(
           key: key,
           create: (_) => HomeCubit(
+            loadProfile: GetIt.instance<LoadProfile>(),
             loadMovies: GetIt.instance<LoadMovies>(),
           )..onInit(),
           child: child,
