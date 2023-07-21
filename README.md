@@ -53,9 +53,9 @@ API The Movie DB
 |:-------------------------------------:|:-----------------------------------------:|:--------------------------------------------:|
 | <img src="docs/Splash.gif" width=80%> | <img src="docs/tela-login.gif" width=80%> | <img src="docs/tela-cadastro.gif" width=80%> |
 
-|                    Home                     |                 Home modo 2                  |                Home filtros                 |
-|:-------------------------------------------:|:--------------------------------------------:|:-------------------------------------------:|
-| <img src="docs/lista-filmes.png" width=80%> | <img src="docs/lista-filmes2.gif" width=80%> | <img src="docs/home-filtro.gif" width=80%>  |
+|                    Home                     |                 Home modo 2                  |                Home filtros                |
+|:-------------------------------------------:|:--------------------------------------------:|:------------------------------------------:|
+| <img src="docs/lista-filmes.png" width=80%> | <img src="docs/lista-filmes2.png" width=80%> | <img src="docs/home-filtro.png" width=80%> |
 
 |                Detalhes                 |          Detalhe Favoritar          |                Lista favoritos                 |
 |:---------------------------------------:|:-----------------------------------:|:----------------------------------------------:|
