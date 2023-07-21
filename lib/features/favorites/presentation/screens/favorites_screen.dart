@@ -29,6 +29,14 @@ class FavoritesScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          if (favoritesList.isEmpty) {
+            return const Center(
+              child: Text(
+                "Nenhum filme favorito",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            );
+          }
           return ListView.separated(
             itemCount: favoritesList.length,
             padding: const EdgeInsets.all(16),

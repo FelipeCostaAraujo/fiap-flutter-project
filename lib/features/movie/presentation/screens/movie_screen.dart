@@ -103,7 +103,6 @@ class _MovieScreenState extends State<MovieScreen> {
           text: TextSpan(
             text: title,
             style: const TextStyle(
-              color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
             children: <TextSpan>[

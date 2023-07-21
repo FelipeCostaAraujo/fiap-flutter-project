@@ -67,7 +67,6 @@ class FavoriteListCell extends StatelessWidget {
       text: TextSpan(
         text: title,
         style: const TextStyle(
-          color: Colors.black,
           fontWeight: FontWeight.bold,
         ),
         children: <TextSpan>[

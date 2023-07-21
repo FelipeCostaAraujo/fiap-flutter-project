@@ -30,7 +30,7 @@ class _AuthScreenState extends State<AuthScreen>
           'Login',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.deepPurple,
       ),
       body: InkWell(
         splashFactory: NoSplash.splashFactory,
@@ -144,13 +144,13 @@ class _AuthScreenState extends State<AuthScreen>
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).primaryColor,
+        color: Colors.deepPurple,
         height: 60,
         child: TextButton(
           style: TextButton.styleFrom(
             elevation: 2,
             foregroundColor: Colors.white,
-            backgroundColor: Theme.of(context).primaryColor.withOpacity(0.5),
+            backgroundColor: Colors.deepPurple.withOpacity(0.5),
             disabledBackgroundColor: Theme.of(context)
                 .primaryColor
                 .withOpacity(0.5)
