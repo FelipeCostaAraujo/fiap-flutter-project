@@ -14,6 +14,10 @@ _1MOBR / APLICAÇÕES NATIVAS CROSS-PLATFORM COM FLUTTER / [MARCELO PINHEIRO MON
 - [x] (2pts) Arquitetura: Separação de camadas, utilização do Bloc/Cubit
 - [x] (2pts) Qualidade do app, pontos de vista do usuário final
 
+## Objetivo do projeto
+
+Desenvolver um aplicativo em flutter com tema livre utilizando os principais assuntos vistos em aula.
+
 ## Descrição do projeto
 
 O projeto consiste em um aplicativo com recursos de login utilizando o Firebase para autenticação.
