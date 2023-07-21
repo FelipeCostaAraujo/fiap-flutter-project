@@ -60,3 +60,7 @@ API The Movie DB
 |                   Detalhes                   |          Detalhe Favoritar          |                 Lista favoritos                 |
 |:--------------------------------------------:|:-----------------------------------:|:-----------------------------------------------:|
 |   <img src="docs/detalhes.gif" width=100%>   | <img src="docs/like.gif" width=50%> | <img src="docs/lista-favoritos.gif" width=100%> |
+
+|                Menu                 |                   Perfil                   |               Configurações                |
+|:-----------------------------------:|:------------------------------------------:|:------------------------------------------:|
+| <img src="docs/menu.gif" width=80%> | <img src="docs/menu-perfil.gif" width=80%> | <img src="docs/menu-config.gif" width=80%> |
