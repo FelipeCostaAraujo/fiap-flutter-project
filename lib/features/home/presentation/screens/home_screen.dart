@@ -104,25 +104,9 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                                       width: 200,
                                       height: 200, errorBuilder:
                                           (context, error, stackTrace) {
-                                      return Image.asset(
-                                          'assets/images/cat.jpg',
-                                          fit: BoxFit.cover,
-                                          width: 200,
-                                          height: 200, errorBuilder:
-                                              (context, error, stackTrace) {
-                                        return const Icon(Icons.error);
-                                      });
+                                      return const CatImage();
                                     })
-                                  : Image.asset(
-                                      'assets/images/cat.jpg',
-                                      fit: BoxFit.cover,
-                                      width: 200,
-                                      height: 200,
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                        return const Icon(Icons.error);
-                                      },
-                                    ),
+                                  : const CatImage(),
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -217,8 +201,11 @@ class _HomeScreenState extends State<HomeScreen> with NavigationManager {
                       onTap: () async {
                         await FirebaseAuth.instance.signOut();
                         if (context.mounted) {
-                          navigateTo(AuthScreen.routeName, context,
-                              clear: true);
+                          navigateTo(
+                            AuthScreen.routeName,
+                            context,
+                            clear: true,
+                          );
                         }
                       },
                     ),

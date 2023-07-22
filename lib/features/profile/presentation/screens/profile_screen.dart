@@ -212,11 +212,6 @@ class _ProfileScreenState extends State<ProfileScreen> with KeyboardManager {
         return const Icon(Icons.error);
       });
     }
-    return Image.asset('assets/images/cat.jpg',
-        fit: BoxFit.cover,
-        width: 200,
-        height: 200, errorBuilder: (context, error, stackTrace) {
-      return const Icon(Icons.error);
-    });
+    return const CatImage();
   }
 }
