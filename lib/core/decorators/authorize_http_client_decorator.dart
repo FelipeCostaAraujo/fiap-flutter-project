@@ -1,8 +1,4 @@
-import 'package:mobr1/core/utils/settings.dart';
-
-import '../data/http_client.dart';
-import '../data/http_error.dart';
-import '../infra/http_adapter.dart';
+import '../core.dart';
 
 class AuthorizeHttpClientDecorator implements HttpClient {
   final HttpClient decoratee = HttpAdapter();

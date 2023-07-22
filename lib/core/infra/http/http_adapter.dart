@@ -1,6 +1,6 @@
 import 'package:mobr1/core/utils/settings.dart';
 
-import '../data/http.dart';
+import '../../data/http/http.dart';
 
 import 'package:http/http.dart';
 import 'dart:convert';

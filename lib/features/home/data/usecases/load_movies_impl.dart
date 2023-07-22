@@ -1,7 +1,7 @@
 import 'package:mobr1/core/core.dart';
 import 'package:mobr1/features/home/home.dart';
 
-import '../../../../core/data/http.dart';
+import '../../../../core/data/http/http.dart';
 import '../../domain/entities/movie_entity.dart';
 
 class LoadMoviesImpl implements LoadMovies {

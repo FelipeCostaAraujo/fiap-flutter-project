@@ -1,6 +1,4 @@
 import 'package:mobr1/core/core.dart';
-
-import '../../../../core/data/http_client.dart';
 import '../../movie.dart';
 
 class LoadMovieDetailImpl implements LoadMovieDetail {

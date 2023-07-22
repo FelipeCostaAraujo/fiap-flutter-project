@@ -1,4 +1,4 @@
-import '../../../../core/data/http.dart';
+import '../../../../core/data/http/http.dart';
 import '../../domain/entities/movie_entity.dart';
 
 class RemoteMovieDetailModel {
