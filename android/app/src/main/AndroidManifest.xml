@@ -10,7 +10,7 @@
         </intent>
     </queries>
     <application
-        android:label="mobr1"
+        android:label="Filmes Fiap"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
