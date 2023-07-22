@@ -43,7 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen>
         }
         if (state.status == SignUpCubitStateStatus.success) {
           hideLoading(context);
-          navigateTo(HomeScreen.routeName, context);
+          navigateTo(HomeScreen.routeName, context, clear: true);
         }
       }, builder: (context, state) {
         return GestureDetector(

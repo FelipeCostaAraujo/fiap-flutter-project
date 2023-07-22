@@ -47,7 +47,7 @@ class _AuthScreenState extends State<AuthScreen>
               showError(context, state.error ?? "Erro desconhecido");
             }
             if (state.status == AuthCubitStateStatus.authenticated) {
-              navigateTo(HomeScreen.routeName, context);
+              navigateTo(HomeScreen.routeName, context, clear: true);
             }
           },
           builder: (context, state) {
