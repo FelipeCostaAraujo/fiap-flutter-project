@@ -28,6 +28,8 @@ class SignUpImpl implements SignUp {
           throw DomainError.emailInUse;
         case 'invalid-email':
           throw DomainError.emailInvalid;
+        case 'weak-password':
+          throw DomainError.passwordWeak;
         default:
           throw DomainError.unexpected;
       }

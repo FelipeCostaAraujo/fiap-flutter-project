@@ -21,8 +21,9 @@ class ProfileContainer extends BlocBuilder<ProfileCubit, ProfileCubitState> {
                 );
               case ProfileCubitStateStatus.error:
                 return DefaultErrorView(
-                    onTryAgain: () => ProfileCubitProvider.of(context).onInit(),
-                    message: state.error!);
+                  onTryAgain: () => ProfileCubitProvider.of(context).onInit(),
+                  message: state.error!,
+                );
             }
           },
         );

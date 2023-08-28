@@ -37,10 +37,12 @@ class ProfileCubit extends Cubit<ProfileCubitState> {
         profile: profileEntity,
       ));
     } on DomainError catch (error) {
-      emit(state.copyWith(
-        status: ProfileCubitStateStatus.error,
-        error: error.description,
-      ));
+      emit(
+        state.copyWith(
+          status: ProfileCubitStateStatus.error,
+          error: error.description,
+        ),
+      );
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
+import 'package:mobr1/core/core.dart';
 import 'package:mobr1/features/features.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +21,9 @@ void main() async {
   FavoritesServiceLocator.setup();
   SettingsServiceLocator.setup();
   ProfileServiceLocator.setup();
+
+  ///Setup Settings
+  Settings.init();
 
   runApp(const MyApp());
 }

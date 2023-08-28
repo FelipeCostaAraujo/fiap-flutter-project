@@ -6,6 +6,7 @@ enum DomainError {
   userNotFound,
   emailInUse,
   emailInvalid,
+  passwordWeak,
   accessDenied;
 
   String get description {
@@ -14,6 +15,8 @@ enum DomainError {
         return 'Email já cadastrado';
       case DomainError.emailInvalid:
         return 'Email inválido';
+      case DomainError.passwordWeak:
+        return 'Senha fraca';
       case DomainError.userNotFound:
         return 'Usuário não encontrado';
       case DomainError.invalidCredentials:
